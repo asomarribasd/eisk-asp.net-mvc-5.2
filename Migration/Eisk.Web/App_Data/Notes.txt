@@ -1,0 +1,58 @@
+﻿===================================================
+
+* Bootstrap UI Theme Implementation
+	IN PROGRESS * Listing page
+	IN PROGRESS * CSS clean-up
+	IN PROGRESS * Edit page
+	* Details 
+* Image upload broken
+* Paging Support @ Listing
+* Sorting Support @ Listing
+* Message Alert Close not working
+* Implement Bundle
+* ASP.NET Identity Implementation
+* Site Breadcrumb
+* Attribute routing
+* Usage of automapper for view model mapping code
+* Usage of Entity Framework Enumeration
+* Test improvements
+* Horizontal Menu
+DONE * Deleted Selected Broken
+
+* Mobile (Listing + Details)
+* Socket/Notification (SignalIR)
+* Bootstrap switcher
+* OWIN/Katana Implementation
+* Convert jQuery items to Angular.js/Knockout.js
+* Scafold Template
+* Upload image through test data
+* Implement default dependency injection
+
+* login page
+* data setup
+* attribute based domain data (name, address) setup for test
+* attribute based domain data (name, address) validation
+* search functionality
+
+===================================================
+Check References
+
+http://www.asp.net/mvc/overview/releases/whats-new-in-aspnet-mvc-52
+http://www.asp.net/mvc/overview/releases/mvc51-release-notes
+http://www.asp.net/mvc/mvc5
+
+===================================================
+Future Editions 
+
+* MVC + Bootstrap
+* MVC + EF
+* MVC + Azure
+* MVC + Web API + EF
+* MVC + Web API + Azure
+* Web Form + EF
+* Web Form + Azure
+* F#
+* Python
+* Orchard Module
+
+===================================================
