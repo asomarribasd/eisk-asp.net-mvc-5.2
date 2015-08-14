@@ -31,6 +31,7 @@ Visual Studio 2015
 
 ##Visual Studio 
 * New project structure
+* New packaging (binary and client side libraries)
 
 
 
