@@ -29,6 +29,10 @@ Visual Studio 2015
 * View Component
 * Built-in dependency injection
 
+##C-sharp
+* nameof operator
+* Null propagation operator
+
 ##Visual Studio 
 * New project structure
 * New packaging (binary and client side libraries)
