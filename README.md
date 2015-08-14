@@ -20,7 +20,7 @@ Visual Studio 2015
 * DNX Core 5.0
 * C# 6.0
 * Sql Server Compact Framework
-* Twitter Bootstrap
+* Twitter Bootstrap Template
 * Visual Studio 2015
 
 ##Key Features Utilized
