@@ -34,8 +34,8 @@ Visual Studio 2015
 * Null propagation operator
 
 ##Visual Studio 
-* New project structure.
-* New packaging (binary and client side libraries).
+* New project structure...
+* New packaging (binary and client side libraries)...
 
 
 
