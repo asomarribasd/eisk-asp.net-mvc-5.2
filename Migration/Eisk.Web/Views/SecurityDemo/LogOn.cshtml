@@ -1,43 +1,70 @@
-﻿@{
-    ViewBag.Title = "Log On";
+﻿@using System.Web.Optimization
+@model Eisk.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
 }
-<h1 class="title-regular clearfix">
-    EISK Login</h1>
-<div class="grid_10 alpha">
-    <h1 class="title-regular-2">
-        Log on to your admin account</h1>
-    <p>
-        Sed fermentum sollicitudin commodo. Praesent consequat lacinia lacus, nec pellentesque
-        lectus tempor nec. Nullam sit amet neque vitae lorem lacinia pretium sit amet id
-        sem. Aenean nulla arcu, fermentum eu cursus vulputate, aliquet a purus. Proin id
-        massa risus, vitae porta turpis. Donec at justo in eros venenatis tempus. Proin
-        congue vulputate consectetur. Nunc in nunc eu dui feugiat condimentum quis eget
-        felis.
-    </p>
-    <em>Demo Member Username: member1 Password: any </em>
-    <br />
-    <em>Demo Admin Username: admin1 Password: any </em></p>
-</div>
-<div class="grid_6 omega">
-    <div class="round-box">
-        @using (Html.BeginForm())
-        {
+
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("LogOn", "SecurityDemo", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Use a local account to log in.</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="sidePanel">
+            <h4 class="title-regular-2">
+                Log on to your admin account
+            </h4>
             <p>
-                <label for="name">
-                    Username
-                </label>
-                <br />
-                <input name="userName" type="text" class="text" /><br />
-                <label for="password">
-                    Password</label><br />
-                <input name="password" type="password" class="text" /><br />
-                <input title="remember" type="checkbox" name="checkboxRemember" id="checkBoxRemember" />
-                Remember me<br />
+                Sed fermentum sollicitudin commodo. Praesent consequat lacinia lacus, nec pellentesque
+                lectus tempor nec. Nullam sit amet neque vitae lorem lacinia pretium sit amet id
+                sem. Aenean nulla arcu, fermentum eu cursus vulputate, aliquet a purus. Proin id
+                massa risus, vitae porta turpis. Donec at justo in eros venenatis tempus. Proin
+                congue vulputate consectetur. Nunc in nunc eu dui feugiat condimentum quis eget
+                felis.
             </p>
-            <p>
-                <input type="submit" name="button" class="button green" value="Login" />
-            </p>
-       
-        }
+            <em>Demo Member Username: member1@member.com Password: any </em>
+            <br />
+            <em>Demo Admin Username: admin1@admin.com Password: any </em></p>
+
+        </section>
     </div>
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

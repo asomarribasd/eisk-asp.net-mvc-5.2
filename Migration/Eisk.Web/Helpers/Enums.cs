@@ -9,12 +9,12 @@ The only requirement to do that, you need to keep the developer name, as provide
 Architecture Designed and Implemented By:
 Mohammad Ashraful Alam
 Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
-Twitter: http://twitter.com/AshrafulAlam | Blog: http://blog.ashraful.net | Portfolio: http://www.ashraful.net
+Twitter: http://twitter.com/AshrafulAlam | Blog: weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
 namespace Eisk
 {
-    public enum MessageType { Success, Error, Warning, Info }
+    public enum MessageType { Success, Danger, Warning, Info }
     public enum EditMode { Create, Edit, ReadOnly }
     public enum UserRole { Administrator }
 }

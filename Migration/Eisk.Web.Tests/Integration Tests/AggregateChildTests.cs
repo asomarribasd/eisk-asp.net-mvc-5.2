@@ -9,7 +9,7 @@ The only requirement to do that, you need to keep the developer name, as provide
 Architecture Designed and Implemented By:
 Mohammad Ashraful Alam
 Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
-Twitter: http://twitter.com/AshrafulAlam | Blog: http://blog.ashraful.net | Portfolio: http://www.ashraful.net
+Twitter: http://twitter.com/AshrafulAlam | Blog: weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
 using System.Collections.Generic;
@@ -42,8 +42,8 @@ namespace Eisk.Tests
 
             Employee subordinateEmployee = TestDataHelper.CreateEmployeeWithValidData();
 
-            supervisorEmployee.Subordinates = new List<Employee>();
-            supervisorEmployee.Subordinates.Add(subordinateEmployee); //marking to add to database
+            supervisorEmployee.Subordinates = new List<Employee> {subordinateEmployee};
+            //marking to add to database
 
             DatabaseContext ctx = new DatabaseContext();
             ctx.Entry(supervisorEmployee).State = EntityState.Added;

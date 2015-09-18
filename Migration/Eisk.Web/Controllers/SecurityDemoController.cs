@@ -9,7 +9,7 @@ The only requirement to do that, you need to keep the developer name, as provide
 Architecture Designed and Implemented By:
 Mohammad Ashraful Alam
 Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
-Twitter: http://twitter.com/AshrafulAlam | Blog: http://blog.ashraful.net | Portfolio: http://www.ashraful.net
+Twitter: http://twitter.com/AshrafulAlam | Blog: weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
 namespace Eisk.Controllers
@@ -43,31 +43,30 @@ namespace Eisk.Controllers
         public ViewResult LogOn()
         {
             if (Request.QueryString["ReturnUrl"] != null)
-                this.ShowMessage("You need to log-on first with appropriate role to access the page you requested.", MessageType.Error, false);
+                this.ShowMessage("You need to log-on first with appropriate role to access the page you requested.", MessageType.Info, false);
             return View();
         }
 
         [HttpPost]
-        public ActionResult LogOn(FormCollection fc)
+        public ActionResult LogOn(LoginViewModel loginViewModel)
         {
-            UserInfo user = UserDataAccess.Validate(fc["userName"], fc["password"]);
+            UserInfo user = UserDataAccess.Validate(loginViewModel.Email, loginViewModel.Password);
 
             if (user != null)//if the log-in is successful
             {
-                FormsAuthentication.RedirectFromLoginPage(user.UserName, fc["checkboxRemember"] == "on");
+                FormsAuthentication.RedirectFromLoginPage(user.UserName, loginViewModel.RememberMe);
 
                 if (Request.QueryString["ReturnUrl"] != null)
-                    Response.Redirect(System.Web.HttpContext.Current.Request.QueryString["ReturnUrl"].ToString());
+                    Response.Redirect(System.Web.HttpContext.Current.Request.QueryString["ReturnUrl"]);
                 else
                 {
                     if (user.UserRole == UserRole.Administrator.ToString())
                         return RedirectToAction("Admin");
-                    else
-                        return RedirectToAction("Member");
+                    return RedirectToAction("Member");
                 }
             }
             else
-                this.ShowMessage("Invalid user name or password", MessageType.Error, false);
+                this.ShowMessage("Invalid user name or password", MessageType.Danger, false);
 
             return View();
 
@@ -143,7 +142,7 @@ namespace Eisk.DataAccess
                         _userInMemoryDataSource.Add(
                             new UserInfo
                             {
-                                UserName = "member" + (i + 1),
+                                UserName = "member" + (i + 1) + "@member.com",
                                 Password = "any"
                             });
 
@@ -153,7 +152,7 @@ namespace Eisk.DataAccess
                             new UserInfo
                             {
                                 UserRole = UserRole.Administrator.ToString(),
-                                UserName = "admin" + (i + 1),
+                                UserName = "admin" + (i + 1) + "@admin.com",
                                 Password = "any"
                             });
 

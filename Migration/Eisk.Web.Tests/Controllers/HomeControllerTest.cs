@@ -14,7 +14,7 @@ namespace Eisk.Tests
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.About() as ViewResult;
+            ViewResult result = controller.About();
 
             // Assert
             Assert.IsNotNull(result);

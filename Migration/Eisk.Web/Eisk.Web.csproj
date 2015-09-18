@@ -32,6 +32,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -186,6 +187,7 @@
     <Compile Include="Models\Values Objects\Address.cs" />
     <Compile Include="Models\Model Sets\LookUpModelSet.cs" />
     <Compile Include="Helpers\GridViewModel.cs" />
+    <Compile Include="Models\View Models\LoginViewModel.cs" />
     <Compile Include="Models\View Models\EmployeeEditorModel.cs" />
     <Compile Include="Models\View Models\EmployeeViewModel.cs" />
     <Compile Include="Models\View Models\MessageViewModel.cs">
@@ -197,25 +199,8 @@
   <ItemGroup>
     <Content Include="App_Data\Notes.txt" />
     <Content Include="App_Data\TestData.xml" />
-    <Content Include="CodeTemplates\Note.txt" />
-    <Content Include="CodeTemplates\PackageVersions.xml" />
-    <Content Include="Content\themes\default\css\bootstrap-theme.3.3.4.min.css" />
-    <Content Include="Content\themes\default\css\bootstrap.3.3.4.min.css" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-bg_flat_0_eeeeee_40x100.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-bg_flat_55_c0402a_40x100.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-bg_flat_55_eeeeee_40x100.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-bg_glass_100_f8f8f8_1x400.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-bg_glass_35_dddddd_1x400.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-bg_glass_60_eeeeee_1x400.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-bg_inset-hard_75_999999_1x100.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-bg_inset-soft_50_c9c9c9_1x100.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-icons_3383bb_256x240.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-icons_70b2e1_256x240.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-icons_999999_256x240.png" />
-    <Content Include="Content\themes\default\css\overcast\images\ui-icons_fbc856_256x240.png" />
-    <Content Include="Content\themes\default\css\overcast\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\default\css\bootstrap.css" />
+    <Content Include="Content\themes\default\css\eisk.css" />
     <Content Include="Content\themes\default\css\Site.css" />
     <Content Include="Content\themes\default\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\ico-refresh.png" />
@@ -232,15 +217,18 @@
     <Content Include="Images\iso-resultset-first.png" />
     <Content Include="Images\loader-life.gif" />
     <Content Include="Images\noimage.gif" />
-    <Content Include="Scripts\bootstrap.3.3.4.min.js" />
+    <Content Include="Content\themes\default\css\bootstrap-theme-3.3.4.min.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\eisk-ajax-loader.js" />
-    <Content Include="Scripts\eisk-required-if-validation.js" />
-    <Content Include="Scripts\jquery-ui-1.8.18.custom.min.js" />
-    <Content Include="Scripts\jquery.1.11.2.min.js" />
-    <Content Include="Scripts\jquery.mobile-1.0.1.min.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\eisk.js" />
     <Content Include="Scripts\eisk-menu.js" />
+    <Content Include="Scripts\eisk-required-if-validation.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\respond.js" />
     <Content Include="Views\Shared\_Layout.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -287,19 +275,6 @@
     </Content>
     <None Include="Architecture\Namespaces.dgml" />
     <None Include="Architecture\ViewModels.cd" />
-    <Content Include="CodeTemplates\MvcControllerEmpty\Controller.cs.t4" />
-    <Content Include="CodeTemplates\MvcControllerWithActions\Controller.cs.t4" />
-    <Content Include="CodeTemplates\MvcControllerWithContext\Controller.cs.t4" />
-    <Content Include="CodeTemplates\MvcViewWithoutModel\Empty.cs.t4" />
-    <Content Include="CodeTemplates\MvcViewWithoutModel\Imports.include.t4" />
-    <Content Include="CodeTemplates\MvcView\Create.cs.t4" />
-    <Content Include="CodeTemplates\MvcView\Delete.cs.t4" />
-    <Content Include="CodeTemplates\MvcView\Details.cs.t4" />
-    <Content Include="CodeTemplates\MvcView\Edit.cs.t4" />
-    <Content Include="CodeTemplates\MvcView\Empty.cs.t4" />
-    <Content Include="CodeTemplates\MvcView\Imports.include.t4" />
-    <Content Include="CodeTemplates\MvcView\List.cs.t4" />
-    <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
     <None Include="Architecture\Controller_Edit_Action.sequencediagram" />
     <None Include="Architecture\Models.cd" />
     <None Include="Architecture\Employee_Validate.sequencediagram" />

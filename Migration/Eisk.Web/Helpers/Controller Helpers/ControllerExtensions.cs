@@ -9,7 +9,7 @@ The only requirement to do that, you need to keep the developer name, as provide
 Architecture Designed and Implemented By:
 Mohammad Ashraful Alam
 Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
-Twitter: http://twitter.com/AshrafulAlam | Blog: http://blog.ashraful.net | Portfolio: http://www.ashraful.net
+Twitter: http://twitter.com/AshrafulAlam | Blog: weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
 using System;
@@ -65,7 +65,7 @@ namespace Eisk.Helpers
         {
             foreach (ModelError error in controller.GetModelErrors())
             {
-                controller.ShowMessage(error.ErrorMessage, MessageType.Error, showAfterRedirect);
+                controller.ShowMessage(error.ErrorMessage, MessageType.Danger, showAfterRedirect);
             }
         }
 

@@ -131,15 +131,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Eisk.Web\Eisk.Web.csproj">
-      <Project>{761CC764-B098-495A-8FAE-9593EB001D16}</Project>
-      <Name>Eisk.Web</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Eisk.MVC7\Eisk.MVC7.csproj">
+      <Project>{8fd80ad0-bffa-469c-b168-8b51787883f9}</Project>
+      <Name>Eisk.MVC7</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
