@@ -32,11 +32,13 @@ namespace Eisk.Tests
     /// * All rows of the corresponding database table of aggregate child are not required to be accessed at the same time.
     /// * No aggregate child can be accessed without accessing aggregate root.
     /// </summary>
+    
     public class AggregateChildTests:IntegrationTestBase
     {
         [Fact]
         public void InsertAggregateChildToNewAggregateRootObject()
         {
+            TestInitialize();
 
             Employee supervisorEmployee = TestDataHelper.CreateEmployeeWithValidData();
 
@@ -57,13 +59,16 @@ namespace Eisk.Tests
             Assert.Equal(1, supervisorEmployee.Subordinates.Count);
         }
 
-       [Fact]
-        public void InsertAggregateChildToAggregateRoot(){
+        [Fact]
+        public void InsertAggregateChildToAggregateRoot()
+        {
+
+            TestInitialize();
 
             DatabaseContext ctx = new DatabaseContext();
 
             Employee supervisorEmployee = ctx.EmployeeRepository.Find(1);
-            
+
             Employee subordinateEmployee = TestDataHelper.CreateEmployeeWithValidData();
 
             supervisorEmployee.Subordinates.Add(subordinateEmployee); //marking to add to database
@@ -96,6 +101,8 @@ namespace Eisk.Tests
         public void UpdatedAggregateChildFromAggregateRoot()
         {
 
+            TestInitialize();
+
             DatabaseContext ctx = new DatabaseContext();
 
             Employee supervisorEmployee = ctx.EmployeeRepository.Find(1);
@@ -115,6 +122,7 @@ namespace Eisk.Tests
         [Fact]
         public void UpdatedAggregateChildToAnotherAggregateRoot()
         {
+            TestInitialize();
 
             DatabaseContext ctx = new DatabaseContext();
 
@@ -137,6 +145,7 @@ namespace Eisk.Tests
         [Fact]
         public void UpdateAggregateChildToNullAggregateRoot()
         {
+            TestInitialize();
 
             DatabaseContext ctx = new DatabaseContext();
 
@@ -159,6 +168,7 @@ namespace Eisk.Tests
         [Fact]
         public void DeleteAggregateChildFromAggregateRootAndDatabase()
         {
+            TestInitialize();
 
             DatabaseContext ctx = new DatabaseContext();
 
@@ -191,6 +201,7 @@ namespace Eisk.Tests
         [Fact]
         public void DeleteAggregateRootWithAllAggregateChild()
         {
+            TestInitialize();
 
             DatabaseContext ctx = new DatabaseContext();
 

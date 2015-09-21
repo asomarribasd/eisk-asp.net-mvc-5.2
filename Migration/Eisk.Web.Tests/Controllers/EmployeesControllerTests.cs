@@ -12,6 +12,7 @@ namespace Eisk.Tests
         public void Edit_Positive_Get_Test()
         {
             // Arrange
+            TestInitialize();
             var controller = DependencyHelper.GetInstance<EmployeesController>();
 
             // Act
@@ -25,6 +26,7 @@ namespace Eisk.Tests
         public void Edit_Positive_Post_Test()
         {
             //Arrange
+            TestInitialize();
             var controller = DependencyHelper.GetInstance<EmployeesController>();
 
             var employee = TestDataHelper.CreateEmployeeWithValidData(1);
@@ -43,6 +45,7 @@ namespace Eisk.Tests
         public void Edit_Negative_Test_Post_Test()
         {
             //Arrange
+            TestInitialize();
             var controller = DependencyHelper.GetInstance<EmployeesController>();
             var employee = TestDataHelper.CreateEmployeeWithValidData(1);
             employee.Address.AddressLine = "2, ABC Road";
@@ -58,6 +61,8 @@ namespace Eisk.Tests
         public void Edit_Test()
         {
             //Arrange
+            TestInitialize();
+
             var controller = DependencyHelper.GetInstance<EmployeesController>();
 
             var employee = TestDataHelper.CreateEmployeeWithValidData(1);
