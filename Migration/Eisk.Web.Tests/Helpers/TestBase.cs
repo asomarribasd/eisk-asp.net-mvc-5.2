@@ -34,7 +34,7 @@ namespace Eisk.Helpers
             base.TestInitialize();
 
             //Generate test data
-            TestDataHelper.InitializeSchemaAndData(@"..\..\..\Eisk.Web\App_Data\TestData.xml");
+            TestDataHelper.InitializeSchemaAndData(@"..\..\..\..\Eisk.Web\App_Data\TestData.xml");
         }
         
     }
