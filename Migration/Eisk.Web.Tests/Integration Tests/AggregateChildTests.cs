@@ -12,13 +12,13 @@ Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
 Twitter: http://twitter.com/AshrafulAlam | Blog: weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
+
 using System.Collections.Generic;
-using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using Eisk.DataAccess;
 using Eisk.Helpers;
 using Eisk.Models;
-using System.Data.Entity;
 using Xunit;
 
 namespace Eisk.Tests

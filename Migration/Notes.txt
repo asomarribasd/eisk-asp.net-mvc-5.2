@@ -1,0 +1,10 @@
+=========================
+Test Architecture 
+
+Controller (Unit Tests). Requires Mock/DI
+Controller (Integration Tests: CLR)
+Controller (Integration Tests: REST)
+Domain (Unit Tests) 
+Repositories (Integration Tests)
+
+=========================

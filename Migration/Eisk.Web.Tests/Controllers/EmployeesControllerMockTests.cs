@@ -20,21 +20,14 @@ namespace Eisk.Tests
 
         public EmployeesControllerMockTests()
         {
-            TestInitialize();
-        }
-
-        void TestInitialize()
-        {
             DependencyHelper.Initialize();
             IUnityContainer container = DependencyHelper.Container;
             _mockDbContext = new Mock<DatabaseContext>();
-            container.RegisterInstance<DatabaseContext>(_mockDbContext.Object);
+            container.RegisterInstance(_mockDbContext.Object);
             _employeeController = container.Resolve<EmployeesController>();
             _fakeEmployeeDbSet = new FakeEmployeeSet();
         }
 
-        
-        
         ~EmployeesControllerMockTests()
         {
             DependencyHelper.ClearContainer();

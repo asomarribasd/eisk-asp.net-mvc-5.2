@@ -1,4 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
+using Eisk.Models;
+using Xunit;
 /****************** Copyright Notice *****************
  
 This code is licensed under Microsoft Public License (Ms-PL). 
@@ -13,11 +17,6 @@ Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
 Twitter: http://twitter.com/AshrafulAlam | Blog: weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
-using Eisk.Models;
-using System.Reflection;
-using System;
-using Eisk.Helpers;
-using Xunit;
 
 namespace Eisk.Tests
 {
@@ -59,16 +58,6 @@ namespace Eisk.Tests
                 fi.SetValue(destination, fi.GetValue(source));
             }
         }
-
-        //[Fact]
-        //public void TestWebApi()
-        //{
-        //    //perform call to authentication api for validation
-        //    string apiAddress = "http://localhost:2468/api/AuthenticationApi/GetAll/";
-
-        //    JsonArray responseData = HttpClientHelper.ExtractContent<JsonArray>(apiAddress);
-        //    Assert.IsNotNull(responseData);
-        //}
 
     }
 }
