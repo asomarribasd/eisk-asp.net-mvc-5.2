@@ -4,7 +4,7 @@ using Eisk.Controllers;
 using Eisk.Helpers;
 using Xunit;
 
-namespace Eisk.Tests
+namespace Eisk.IntegrationTests
 {
     public class EmployeesControllerTest : IntegrationTestBase
     {

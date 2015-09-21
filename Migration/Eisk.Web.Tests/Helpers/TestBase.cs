@@ -23,21 +23,4 @@ namespace Eisk.Helpers
             //DependencyHelper.Initialize();
         }
     }
-
-   public class IntegrationTestBase:TestBase
-    {
-       protected IntegrationTestBase()
-       {
-           TestInitialize();
-       }
-
-       public override sealed void TestInitialize()
-        {
-            base.TestInitialize();
-
-            //Generate test data
-            TestDataHelper.InitializeSchemaAndData(@"..\..\..\..\Eisk.Web\App_Data\TestData.xml");
-        }
-        
-    }
 }

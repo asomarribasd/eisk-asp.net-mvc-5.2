@@ -21,7 +21,7 @@ using Eisk.Helpers;
 using Eisk.Models;
 using Xunit;
 
-namespace Eisk.Tests
+namespace Eisk.IntegrationTests
 {
     /// <summary>
     /// Rule: The concept of aggregate child is, the entities in the system, which CRUD operation is performed via a agrregate root (i.e.parent foreign key) object.
