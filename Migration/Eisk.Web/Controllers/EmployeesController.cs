@@ -12,7 +12,7 @@ The only requirement to do that, you need to keep the developer name, as provide
 Architecture Designed and Implemented By:
 Mohammad Ashraful Alam
 Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
-Twitter: http://twitter.com/AshrafulAlam | Blog: weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
+Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
 using System;
