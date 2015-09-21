@@ -12,12 +12,10 @@ Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
 Twitter: http://twitter.com/AshrafulAlam | Blog: weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Eisk.Helpers
 {
     public class TestBase
     {
-        [TestInitialize]
         public virtual void TestInitialize()
         {
             //Initialize the dependency container to clear any explicit mapping (non-config) done by previous tests
@@ -28,8 +26,12 @@ namespace Eisk.Helpers
 
    public class IntegrationTestBase:TestBase
     {
-        [TestInitialize]
-        public override void TestInitialize()
+       protected IntegrationTestBase()
+       {
+           TestInitialize();
+       }
+
+       public override sealed void TestInitialize()
         {
             base.TestInitialize();
 

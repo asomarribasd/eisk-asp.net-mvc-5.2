@@ -14,17 +14,16 @@ Twitter: http://twitter.com/AshrafulAlam | Blog: weblogs.asp.net/ashraful | Gith
    
 *******************************************************/
 using Eisk.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Reflection;
 using System;
 using Eisk.Helpers;
+using Xunit;
 
 namespace Eisk.Tests
 {
-    [TestClass]
     public class ValidationTests
     {
-        [TestMethod]
+        [Fact]
         public void Employee_model_set_with_Ivalidable_objet()
         {
             // Arrange
@@ -34,9 +33,9 @@ namespace Eisk.Tests
             var attribute = propertyInfo.GetCustomAttributes(typeof(RequiredAttribute), false);
 
             // Assert
-            Assert.IsNotNull(attribute);
+            Assert.NotNull(attribute);
         }
-        [TestMethod]
+        [Fact]
         public void Test_Copy()
         {
             Employee emp = TestDataHelper.CreateEmployeeWithValidData();
@@ -61,7 +60,7 @@ namespace Eisk.Tests
             }
         }
 
-        //[TestMethod]
+        //[Fact]
         //public void TestWebApi()
         //{
         //    //perform call to authentication api for validation

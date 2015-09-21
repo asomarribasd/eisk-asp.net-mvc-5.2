@@ -4,12 +4,11 @@ using Eisk.DataAccess;
 using Eisk.Helpers;
 using Eisk.Models;
 using Microsoft.Practices.Unity;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Xunit;
 
 namespace Eisk.Tests
 {
-    [TestClass]
     public class EmployeesControllerMockTests
     {
         #region Test Assets
@@ -19,8 +18,12 @@ namespace Eisk.Tests
         EmployeesController _employeeController;
         FakeEmployeeSet _fakeEmployeeDbSet;
 
-        [TestInitialize]
-        public void TestInitialize()
+        public EmployeesControllerMockTests()
+        {
+            TestInitialize();
+        }
+
+        void TestInitialize()
         {
             DependencyHelper.Initialize();
             IUnityContainer container = DependencyHelper.Container;
@@ -30,15 +33,16 @@ namespace Eisk.Tests
             _fakeEmployeeDbSet = new FakeEmployeeSet();
         }
 
-        [TestCleanup()]
-        public void TestCleanup()
+        
+        
+        ~EmployeesControllerMockTests()
         {
             DependencyHelper.ClearContainer();
         }
-        
+
         #endregion
 
-        [TestMethod]
+        [Fact]
         public void Edit_Negative_Test_Post_Mock_Test()
         {
             //Arrange
@@ -57,11 +61,11 @@ namespace Eisk.Tests
             _employeeController.Edit(_employee);
 
             //Assert
-            Assert.IsTrue(EmployeeAddressMustBeUnique.IsErrorAvalilableIn(_employeeController, _employee));
+            Assert.True(EmployeeAddressMustBeUnique.IsErrorAvalilableIn(_employeeController, _employee));
        
         }
 
-        [TestMethod]
+        [Fact]
         public void UpdateEmployee_SupervisorsCountryIsNotSame_ShouldThrowException()
         {
             /************* Arrange: Setting up data containers ************************************************/
@@ -98,7 +102,7 @@ namespace Eisk.Tests
             _employeeController.Edit(_employee);
 
             /************* Assert ************************************************/
-            Assert.IsTrue(SupervisorCountryMustBeSame.IsErrorAvalilableIn(_employeeController));
+            Assert.True(SupervisorCountryMustBeSame.IsErrorAvalilableIn(_employeeController));
             
         }
     }

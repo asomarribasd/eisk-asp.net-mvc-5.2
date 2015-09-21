@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Eisk.BusinessRules;
 using Eisk.Controllers;
 using Eisk.Helpers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+
 namespace Eisk.Tests
 {
-    [TestClass]
     public class EmployeesControllerTest : IntegrationTestBase
     {
-        [TestMethod]
+        [Fact]
         public void Edit_Positive_Get_Test()
         {
             // Arrange
@@ -22,10 +18,10 @@ namespace Eisk.Tests
             var viewResult = controller.Edit(1) as ViewResult;
 
             // Assert
-            Assert.AreEqual(string.Empty, viewResult.ViewName);
+            Assert.Equal(string.Empty, viewResult.ViewName);
         }
 
-        [TestMethod]
+        [Fact]
         public void Edit_Positive_Post_Test()
         {
             //Arrange
@@ -39,11 +35,11 @@ namespace Eisk.Tests
             var result = controller.Edit(employee);
 
             //Assert
-            Assert.IsTrue(controller.ModelState.IsValid);
+            Assert.True(controller.ModelState.IsValid);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void Edit_Negative_Test_Post_Test()
         {
             //Arrange
@@ -55,10 +51,10 @@ namespace Eisk.Tests
             controller.Edit(employee);
 
             //Assert
-            Assert.IsTrue(EmployeeAddressMustBeUnique.IsErrorAvalilableIn(controller, employee));
+            Assert.True(EmployeeAddressMustBeUnique.IsErrorAvalilableIn(controller, employee));
         }
 
-        [TestMethod]
+        [Fact]
         public void Edit_Test()
         {
             //Arrange
@@ -74,7 +70,7 @@ namespace Eisk.Tests
             var result = controller.Edit(employee);
 
             //Assert
-            Assert.IsFalse(controller.ModelState.IsValid);
+            Assert.False(controller.ModelState.IsValid);
 
         }
 

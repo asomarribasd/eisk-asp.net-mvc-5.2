@@ -18,8 +18,9 @@ using System.Linq;
 using Eisk.DataAccess;
 using Eisk.Helpers;
 using Eisk.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.Entity;
+using Xunit;
+
 namespace Eisk.Tests
 {
     /// <summary>
@@ -31,10 +32,9 @@ namespace Eisk.Tests
     /// * All rows of the corresponding database table of aggregate child are not required to be accessed at the same time.
     /// * No aggregate child can be accessed without accessing aggregate root.
     /// </summary>
-    [TestClass]
     public class AggregateChildTests:IntegrationTestBase
     {
-        [TestMethod]
+        [Fact]
         public void InsertAggregateChildToNewAggregateRootObject()
         {
 
@@ -51,13 +51,13 @@ namespace Eisk.Tests
 
             int actualCount = (from e in ctx.EmployeeRepository select e).ToList().Count;
 
-            Assert.AreEqual(16, actualCount);
+            Assert.Equal(16, actualCount);
 
             supervisorEmployee = ctx.EmployeeRepository.Find(15);
-            Assert.AreEqual(1, supervisorEmployee.Subordinates.Count);
+            Assert.Equal(1, supervisorEmployee.Subordinates.Count);
         }
 
-       [TestMethod]
+       [Fact]
         public void InsertAggregateChildToAggregateRoot(){
 
             DatabaseContext ctx = new DatabaseContext();
@@ -73,12 +73,12 @@ namespace Eisk.Tests
 
             int actualCount = (from e in ctx.EmployeeRepository select e).ToList().Count;
 
-            Assert.AreEqual(15, actualCount);
-            Assert.AreEqual(11, supervisorEmployee.Subordinates.Count);
+            Assert.Equal(15, actualCount);
+            Assert.Equal(11, supervisorEmployee.Subordinates.Count);
         }
 
 
-        [TestMethod]
+        [Fact]
         public void ReadAggregateChildFromAggregateRoot()
         {
 
@@ -88,11 +88,11 @@ namespace Eisk.Tests
 
             Employee subordinateEmployee = supervisorEmployee.Subordinates.Find(e => e.Id == 3);
 
-            Assert.AreEqual("Mostofa", subordinateEmployee.FirstName);
+            Assert.Equal("Mostofa", subordinateEmployee.FirstName);
             
         }
 
-        [TestMethod]
+        [Fact]
         public void UpdatedAggregateChildFromAggregateRoot()
         {
 
@@ -108,11 +108,11 @@ namespace Eisk.Tests
 
             Employee sub = ctx.EmployeeRepository.Find(3);
 
-            Assert.AreEqual("Md.", sub.FirstName);
+            Assert.Equal("Md.", sub.FirstName);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void UpdatedAggregateChildToAnotherAggregateRoot()
         {
 
@@ -128,13 +128,13 @@ namespace Eisk.Tests
             
             int actualCount = (from e in ctx.EmployeeRepository select e).ToList().Count;
 
-            Assert.AreEqual(14, actualCount);
-            Assert.AreEqual(9, supervisorEmployee.Subordinates.Count);
-            Assert.AreEqual(3, supervisorEmployee2.Subordinates.Count);
+            Assert.Equal(14, actualCount);
+            Assert.Equal(9, supervisorEmployee.Subordinates.Count);
+            Assert.Equal(3, supervisorEmployee2.Subordinates.Count);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void UpdateAggregateChildToNullAggregateRoot()
         {
 
@@ -150,13 +150,13 @@ namespace Eisk.Tests
 
             int actualCount = (from e in ctx.EmployeeRepository select e).ToList().Count;
 
-            Assert.AreEqual(14, actualCount);
+            Assert.Equal(14, actualCount);
 
-            Assert.AreEqual(9, supervisorEmployee.Subordinates.Count);
+            Assert.Equal(9, supervisorEmployee.Subordinates.Count);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void DeleteAggregateChildFromAggregateRootAndDatabase()
         {
 
@@ -182,13 +182,13 @@ namespace Eisk.Tests
 
             int actualCount = (from e in ctx.EmployeeRepository select e).ToList().Count;
 
-            Assert.AreEqual(13, actualCount);
+            Assert.Equal(13, actualCount);
 
-            Assert.AreEqual(9, supervisorEmployee.Subordinates.Count);
+            Assert.Equal(9, supervisorEmployee.Subordinates.Count);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void DeleteAggregateRootWithAllAggregateChild()
         {
 
@@ -212,7 +212,7 @@ namespace Eisk.Tests
 
             int actualCount = (from e in ctx.EmployeeRepository select e).ToList().Count;
 
-            Assert.AreEqual(3, actualCount);
+            Assert.Equal(3, actualCount);
 
         }
       

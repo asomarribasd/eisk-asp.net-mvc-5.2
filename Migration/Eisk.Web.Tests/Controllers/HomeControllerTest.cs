@@ -1,13 +1,12 @@
 ﻿using System.Web.Mvc;
 using Eisk.Controllers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace Eisk.Tests
 {
-    [TestClass]
     public class HomeControllerTest
     {
-        [TestMethod]
+        [Fact]
         public void About()
         {
             // Arrange
@@ -17,7 +16,7 @@ namespace Eisk.Tests
             ViewResult result = controller.About();
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.NotNull(result);
         }
 
     }
