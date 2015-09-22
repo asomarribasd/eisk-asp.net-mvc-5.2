@@ -18,6 +18,7 @@ namespace Eisk
 
             bundles.Add(new ScriptBundle("~/bundles/eisk").Include(
                 "~/Scripts/eisk.js",
+                "~/Scripts/eisk-ajax-loader.js",
                 "~/Scripts/eisk-menu.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
