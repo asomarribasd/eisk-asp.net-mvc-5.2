@@ -21,7 +21,7 @@ namespace Eisk.Controllers
     using DataAccess;
 
 
-    public partial class SecurityDemoController : Controller
+    public class SecurityDemoController : Controller
     {
         public ViewResult Index()
         {
@@ -108,7 +108,7 @@ namespace Eisk.Models
 namespace Eisk.DataAccess
 {
     using System.Collections.Generic;
-    using Eisk.Models;
+    using Models;
     using System.Linq;
 
     public static class UserDataAccess

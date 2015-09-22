@@ -12,18 +12,18 @@ Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
 Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
+
 using System.Data.Entity;
-using Eisk.Models;
 
 namespace Eisk.DataAccess
 {
-    public partial class DatabaseContext : DbContext
+    public partial class DatabaseContext
     {
         public DatabaseContext()
         {
             // Required to prevent bug - http://stackoverflow.com/questions/5737733
-            this.Configuration.ValidateOnSaveEnabled = false;
-            this.Configuration.LazyLoadingEnabled = true;
+            Configuration.ValidateOnSaveEnabled = false;
+            Configuration.LazyLoadingEnabled = true;
         }
 
         public new virtual IDbSet<TEntity> Set<TEntity>() where TEntity : class

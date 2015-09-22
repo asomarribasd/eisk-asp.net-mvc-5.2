@@ -32,7 +32,7 @@ namespace Eisk.BusinessRules
                 ToList();
 
             if (otherEmployeesHavingSameAddress.Count > 0)
-                return new ValidationResult(GetFormattedErrorMessage(employee), new string[] { string.Empty, "Address.AddressLine" });
+                return new ValidationResult(GetFormattedErrorMessage(employee), new[] { string.Empty, "Address.AddressLine" });
 
             return ValidationResult.Success;
         }

@@ -12,7 +12,7 @@ Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
 Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
-using System.Collections;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -42,15 +42,6 @@ namespace Eisk.Models
         }
 
         static SelectList _countrySelectList;
-        public static SelectList CountrySelectList
-        {
-            get
-            {
-                if (_countrySelectList == null)
-                    _countrySelectList = new SelectList(CountryList.Countries);
-
-                return _countrySelectList;
-            }
-        }
+        public static SelectList CountrySelectList => _countrySelectList ?? (_countrySelectList = new SelectList(CountryList.Countries));
     }
 }

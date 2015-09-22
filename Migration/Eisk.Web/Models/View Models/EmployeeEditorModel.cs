@@ -20,30 +20,12 @@ namespace Eisk.Models
 {
     public class EmployeeEditorModel : Employee
     {
-        public IEnumerable<SelectListItem> SupervisorSelectList
-        {
-            get
-            {
-                return LookUpModelSet.SupervisorSelectList;
-            }
-        }
+        public IEnumerable<SelectListItem> SupervisorSelectList => LookUpModelSet.SupervisorSelectList;
 
-        public SelectList CountrySelectList
-        {
-            get
-            {
-                return LookUpModelSet.CountrySelectList;
-            }
-        }
+        public SelectList CountrySelectList => LookUpModelSet.CountrySelectList;
 
         public string PageTitle { get; private set; }
-        public string EditorAction
-        {
-            get
-            {
-                return Id == 0 ? "Create" : "Edit";
-            }
-        }
+        public string EditorAction => Id == 0 ? "Create" : "Edit";
 
         public EmployeeEditorModel()
         {

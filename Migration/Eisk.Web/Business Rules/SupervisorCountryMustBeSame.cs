@@ -33,7 +33,7 @@ namespace Eisk.BusinessRules
                         Find((int)employee.ReportsTo);
 
                 if (employee.Address.Country != employee.Supervisor.Address.Country)
-                    return new ValidationResult(ERROR_MESSAGE, new string[] { string.Empty, "Address.Country" });
+                    return new ValidationResult(ERROR_MESSAGE, new[] { string.Empty, "Address.Country" });
 
             }
 

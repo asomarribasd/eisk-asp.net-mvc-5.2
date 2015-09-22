@@ -21,8 +21,8 @@ namespace Eisk.Models
 {
     public class EmployeeViewModel
     {
-        Employee _employee;
-        ControllerHelper _controllerHelper;
+        readonly Employee _employee;
+        readonly ControllerHelper _controllerHelper;
 
         public EmployeeViewModel(Employee employee, Controller controller)
         {
@@ -31,75 +31,31 @@ namespace Eisk.Models
 
         }
 
-        public int EmployeeId
-        {
-            get
-            {
-                return _employee.Id;
-            }
-        }
+        public int EmployeeId => _employee.Id;
 
-        public string FullName
-        {
-            get
-            {
-                return StringHelper.ConnectStrings(" ", _employee.TitleOfCourtesy, _employee.FirstName, _employee.LastName);
-            }
-        }
+        public string FullName => StringHelper.ConnectStrings(" ", _employee.TitleOfCourtesy, _employee.FirstName, _employee.LastName);
 
-        public string Title
-        {
-            get
-            {
-                return _employee.Title;
-            }
-        }
+        public string Title => _employee.Title;
 
-        public string HireDate
-        {
-            get
-            {
-                return string.Format("{0:M/dd/yyyy}", _employee.HireDate);
-            }
-        }
+        public string HireDate => $"{_employee.HireDate:M/dd/yyyy}";
 
         public string BirthDate
         {
             get
             {
                 if (_employee.BirthDate != null)
-                    return string.Format("{0:M/dd/yyyy}", _employee.BirthDate);
-                else
-                    return "No birthday provided.";
+                    return $"{_employee.BirthDate:M/dd/yyyy}";
+                return "No birthday provided.";
             }
         }
 
-        public string FullAddress
-        {
-            get
-            {
-                return StringHelper.ConnectStrings(", ", _employee.Address.AddressLine,
-                _employee.Address.City, _employee.Address.Region, _employee.Address.PostalCode, _employee.Address.Country);
+        public string FullAddress => StringHelper.ConnectStrings(", ", _employee.Address.AddressLine,
+            _employee.Address.City, _employee.Address.Region, _employee.Address.PostalCode, _employee.Address.Country);
 
-            }
-        }
+        public string PhoneWithExtension => StringHelper.ConnectStrings(" - ", _employee.Phone, _employee.Extension);
 
-        public string PhoneWithExtension
-        {
-            get
-            {
-                return StringHelper.ConnectStrings(" - ", _employee.Phone, _employee.Extension);
-            }
-        }
+        public string EmployeeImageSource => _controllerHelper.Url.Action("EmployeeImageFile", new { id = _employee.Id });
 
-        public string EmployeeImageSource
-        {
-            get
-            {
-                return _controllerHelper.Url.Action("EmployeeImageFile", new { id = _employee.Id });
-            }
-        }
-        
         public IHtmlString SupervisorFullName
         {
             get

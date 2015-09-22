@@ -27,6 +27,7 @@ namespace Eisk.IntegrationTests
         {
             //Arrange
             TestInitialize();
+
             var controller = DependencyHelper.GetInstance<EmployeesController>();
 
             var employee = TestDataHelper.CreateEmployeeWithValidData(1);
@@ -75,6 +76,7 @@ namespace Eisk.IntegrationTests
             var result = controller.Edit(employee);
 
             //Assert
+            Assert.NotNull(result);
             Assert.False(controller.ModelState.IsValid);
 
         }

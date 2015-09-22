@@ -113,7 +113,7 @@ namespace Eisk.Controllers
                     _dbContext.Entry(existingEmployee).State = EntityState.Modified;
                     _dbContext.SaveChanges();
                     this.ShowMessage("Employee saved successfully", MessageType.Success);
-                    return RedirectToAction("Details", new { Id = existingEmployee.Id });
+                    return RedirectToAction("Details", new {existingEmployee.Id});
                 }
                 catch (Exception ex)
                 {
@@ -149,7 +149,7 @@ namespace Eisk.Controllers
             if (image == null)
             {
                 Image img = Image.FromFile(Server.MapPath("~/Images/noimage.gif"));
-                MemoryStream ms = new System.IO.MemoryStream();
+                MemoryStream ms = new MemoryStream();
                 img.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
                 image = ms.ToArray();
             }
@@ -159,11 +159,9 @@ namespace Eisk.Controllers
 
         public FileContentResult EmployeeImageFile(int id)
         {
-            byte[] byteArray;
-
             Employee employee = _dbContext.EmployeeRepository.Find(id);
 
-            byteArray = (employee == null || employee.Id == 0 ? null : employee.Photo);
+            var byteArray = (employee == null || employee.Id == 0 ? null : employee.Photo);
 
             return RenderImage(byteArray);
 
@@ -186,7 +184,7 @@ namespace Eisk.Controllers
         {
             HttpPostedFileBase postedFile = null;
 
-            if (Request != null && Request.Files != null)
+            if (Request?.Files != null)
                 postedFile = Request.Files["imageUpload"];
 
             if (postedFile == null || postedFile.FileName == string.Empty)
