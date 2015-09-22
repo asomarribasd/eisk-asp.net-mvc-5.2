@@ -248,7 +248,6 @@
     <Content Include="Images\loader-life.gif" />
     <Content Include="Images\noimage.gif" />
     <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\eisk-user-list.js" />
     <Content Include="Scripts\eisk-ajax-loader.js" />
     <Content Include="Scripts\eisk.js" />
     <Content Include="Scripts\eisk-menu.js" />
