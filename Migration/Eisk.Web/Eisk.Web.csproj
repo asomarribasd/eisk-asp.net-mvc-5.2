@@ -154,6 +154,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data Access\UserDataAccess.cs" />
+    <Compile Include="Models\Entities\UserInfo.cs" />
     <Compile Include="Initializers\Context\Data Loader\TestDataHelper.cs" />
     <Compile Include="Initializers\Config\BundleConfig.cs" />
     <Compile Include="Initializers\Context\DependencyInjectorInitializer.cs" />
@@ -188,13 +190,13 @@
     <Compile Include="Helpers\Validation\RequiredIfAttribute.cs" />
     <Compile Include="Helpers\XElementExtensions.cs" />
     <Compile Include="Business Rules\EmployeeAddressMustBeUnique.cs" />
-    <Compile Include="Data Mapper\DatabaseContext.Hack.cs" />
-    <Compile Include="Data Mapper\DatabaseContext.cs" />
+    <Compile Include="Data Access\DatabaseContext.Hack.cs" />
+    <Compile Include="Data Access\DatabaseContext.cs" />
     <Compile Include="Models\Base Entities\Person.cs" />
-    <Compile Include="Models\Employee.cs">
+    <Compile Include="Models\Entities\Employee.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Employee.Validation.cs">
+    <Compile Include="Models\Entities\Employee.Validation.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Values Objects\Address.cs" />
