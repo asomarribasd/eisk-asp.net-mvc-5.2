@@ -1,5 +1,5 @@
 ﻿/************************************************************************************************************************************************
-*   Designed and Implemented By: Ashraf Alam, Microsoft MVP | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam     *                
+*   Designed and Implemented By: Ashraf Alam, Microsoft MVP | Github: https://github.com/ashrafalam   | Blog: http://weblogs.asp.net/ashraful   *                
 *************************************************************************************************************************************************/
 using Eisk.DataAccess;
 using Eisk.Helpers;
@@ -16,7 +16,7 @@ namespace Eisk.Controllers
 {
     public class EmployeesController : Controller
     {
-        DatabaseContext _dbContext;
+        readonly DatabaseContext _dbContext;
 
         public EmployeesController(DatabaseContext databaseContext)
         {

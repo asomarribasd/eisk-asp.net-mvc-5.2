@@ -17,15 +17,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("EISK8", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("ASP.NET", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="@Url.Content("~/")">EISK</a> </li>
+                    <li><a href="@Url.Content("~/")">Home</a> </li>
                     <li><a href="@Url.Content("~/Employees/")">Employees</a></li>
-                    <li><a href="@Url.Content("~/SecurityDemo/Member")">Security Samples</a></li>
+                    <li><a href="@Url.Content("~/SecurityDemo/")">Security Samples</a></li>
                 </ul>
-                @*@Html.Partial("_LoginPartial")*@
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>

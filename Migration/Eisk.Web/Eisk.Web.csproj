@@ -304,9 +304,7 @@
     </Content>
     <None Include="Architecture\Namespaces.dgml" />
     <None Include="Architecture\ViewModels.cd" />
-    <None Include="Architecture\Controller_Edit_Action.sequencediagram" />
     <None Include="Architecture\Models.cd" />
-    <None Include="Architecture\Employee_Validate.sequencediagram" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
@@ -318,14 +316,7 @@
     <None Include="Views\Home\Index.iPhone.cshtml" />
     <Content Include="Views\Shared\_EditorImagePanel.cshtml" />
     <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Architecture\Controller_Edit_Action.sequencediagram.layout">
-      <DependentUpon>Controller_Edit_Action.sequencediagram</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Architecture\Employee_Validate.sequencediagram.layout">
-      <DependentUpon>Employee_Validate.sequencediagram</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

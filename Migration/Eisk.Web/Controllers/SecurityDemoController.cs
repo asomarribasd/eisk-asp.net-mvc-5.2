@@ -23,6 +23,7 @@ namespace Eisk.Controllers
 
     public class SecurityDemoController : Controller
     {
+        [Authorize]
         public ViewResult Index()
         {
             return View();

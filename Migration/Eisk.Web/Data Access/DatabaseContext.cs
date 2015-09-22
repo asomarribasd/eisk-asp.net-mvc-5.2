@@ -13,10 +13,5 @@ namespace Eisk.DataAccess
             Configuration.ValidateOnSaveEnabled = false;
             Configuration.LazyLoadingEnabled = true;
         }
-
-        public new virtual IDbSet<TEntity> Set<TEntity>() where TEntity : class
-        {
-            return base.Set<TEntity>();
-        }
     }
 }
