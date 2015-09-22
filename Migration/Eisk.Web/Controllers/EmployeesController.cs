@@ -180,7 +180,7 @@ namespace Eisk.Controllers
             return EmployeeImageFile(id);
         }
 
-        byte[] GetImageFromUpload()
+        private byte[] GetImageFromUpload()
         {
             HttpPostedFileBase postedFile = null;
 
@@ -190,25 +190,21 @@ namespace Eisk.Controllers
             if (postedFile == null || postedFile.FileName == string.Empty)
                 return null;
 
-            using (System.Drawing.Image img =
-                   System.Drawing.Image.FromStream(postedFile.InputStream))
-            {
 
-                //--Initialise the size of the array
-                byte[] file = new byte[postedFile.InputStream.Length];
+            //--Initialise the size of the array
+            byte[] file = new byte[postedFile.InputStream.Length];
 
-                //--Create a new BinaryReader and set the InputStream
-                //-- for the Images InputStream to the
-                //--beginning, as we create the img using a stream.
-                BinaryReader reader =
-                         new BinaryReader(postedFile.InputStream);
-                postedFile.InputStream.Seek(0, SeekOrigin.Begin);
+            //--Create a new BinaryReader and set the InputStream
+            //-- for the Images InputStream to the
+            //--beginning, as we create the img using a stream.
+            BinaryReader reader =
+                new BinaryReader(postedFile.InputStream);
+            postedFile.InputStream.Seek(0, SeekOrigin.Begin);
 
-                //--Load the image binary.
-                file = reader.ReadBytes((int)postedFile.
-                              InputStream.Length);
-                return file;
-            }
+            //--Load the image binary.
+            file = reader.ReadBytes((int) postedFile.
+                InputStream.Length);
+            return file;
         }
 
         void LoadEmployeeImageToObject(Employee employee)

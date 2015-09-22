@@ -56,7 +56,7 @@ namespace Eisk
 
         public static void InitializeSchemaAndData(string filePath)
         {
-            Database.Delete("DatabaseContext");
+            Database.Delete(nameof(DatabaseContext));
             var initializer = new DatabaseContextInitializer(filePath);
             Database.SetInitializer(initializer);
             initializer.InitializeDatabase(DependencyHelper.GetInstance<DatabaseContext>());
