@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 namespace Eisk
 {
-    public partial class DependencyInjectorInitializer
+    public class DependencyInjectorInitializer
     {
         [SuppressMessage("Microsoft.Reliability",
           "CA2000:Dispose objects before losing scope",

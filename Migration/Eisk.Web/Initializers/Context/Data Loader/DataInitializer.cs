@@ -1,7 +1,7 @@
 ﻿using System.Web;
 namespace Eisk
 {
-    public partial class DataInitializer
+    public class DataInitializer
     {
         public static void Init()
         {

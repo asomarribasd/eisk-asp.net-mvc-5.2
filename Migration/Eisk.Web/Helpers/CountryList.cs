@@ -1,19 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace Eisk.Helpers {
 
     public static class CountryList {
 
-        public static IEnumerable<string> Countries
-        {
-            get
-            {
-                return countries;
-            }
-        }
+        public static IEnumerable<string> Countries => countries;
 
-        static readonly IList<string> countries = new List<string> {
+        private static readonly IList<string> countries = new List<string> {
                              { "Bangladesh"},
 							 { "USA" },
 							 { "Afghanistan"},

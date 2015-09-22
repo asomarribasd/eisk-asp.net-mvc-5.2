@@ -12,22 +12,21 @@ Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
 Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
-using System;
+
 using System.Collections.Generic;
-using System.Linq.Expressions;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Eisk.Helpers;
-using System.Web;
 
 namespace Eisk.Models
 {
     public class GridViewModel
     {
-        ControllerHelper ControllerHelper { get; set; }
-        string SingleItemDeleteAction { get; set; }
+        ControllerHelper ControllerHelper { get; }
+        string SingleItemDeleteAction { get; }
         public string GridBindingAction { get; set; }
-        public int TotalRecords { get; private set; }
+        public int TotalRecords { get; }
 
         public GridViewModel(Controller controller, int totalRecords, string gridBindingAction = "GridData", string singleItemDeleteAction = "Delete")
         {
@@ -37,78 +36,42 @@ namespace Eisk.Models
             SingleItemDeleteAction = singleItemDeleteAction;
         }
 
-        public IHtmlString GridDatabind
-        {
-            get
-            {
-                return ControllerHelper.Html.Raw(ControllerHelper.Url.Action(GridBindingAction));
-            }
-        }
+        public IHtmlString GridDatabind => ControllerHelper.Html.Raw(ControllerHelper.Url.Action(GridBindingAction));
 
-        public IHtmlString SingleItemDelete
-        {
-            get
-            {
-                return ControllerHelper.Html.Raw(ControllerHelper.Url.Action(SingleItemDeleteAction, new { id = "__ID__" }));
-            }
-        }
+        public IHtmlString SingleItemDelete => ControllerHelper.Html.Raw(ControllerHelper.Url.Action(SingleItemDeleteAction, new { id = "__ID__" }));
 
 
-        public int TotalPages
-        {
-            get
-            {
-                return (TotalRecords - 1) / ItemsPerPage + 1;
-            }
-        }
+        public int TotalPages => (TotalRecords - 1) / ItemsPerPage + 1;
 
-        public int CurrentPage
-        {
-            get
-            {
-                return Start / ItemsPerPage + 1;
-            }
-        }
+        public int CurrentPage => Start / ItemsPerPage + 1;
 
         List<int> _itemsPerPageOptions;
-        public List<int> ItemsPerPageOptions
-        {
-            get
-            {
-                if (_itemsPerPageOptions == null)
-                    _itemsPerPageOptions = new List<int> { 10, 20, 50, 100 };
-                return _itemsPerPageOptions;
-            }
-        }
+        public List<int> ItemsPerPageOptions => _itemsPerPageOptions ?? (_itemsPerPageOptions = new List<int> {10, 20, 50, 100});
 
         public RouteValueDictionary CurrentRouteValues
         {
             get
             {
-                RouteValueDictionary routeDictionary = new RouteValueDictionary();
+                RouteValueDictionary routeDictionary = new RouteValueDictionary
+                {
+                    [nameof(Start)] = Start,
+                    [nameof(ItemsPerPage)] = ItemsPerPage,
+                    [nameof(OrderBy)] = OrderBy,
+                    [nameof(Desc)] = Desc
+                };
 
-                routeDictionary[ObjectHelper.GetName(() => Start)] = Start;
-                routeDictionary[ObjectHelper.GetName(() => ItemsPerPage)] = ItemsPerPage;
-                routeDictionary[ObjectHelper.GetName(() => OrderBy)] = OrderBy;
-                routeDictionary[ObjectHelper.GetName(() => Desc)] = Desc;
 
                 return routeDictionary;
             }
         }
 
-        public int Start
-        {
-            get
-            {
-                return GetIntRequestObject(ObjectHelper.GetName(() => Start));
-            }
-        }
+        public int Start => GetIntRequestObject(nameof(Start));
 
         public string OrderBy
         {
             get
             {
-                object requestValue = GetRequestObject(ObjectHelper.GetName(() => OrderBy));
+                object requestValue = GetRequestObject(nameof(OrderBy));
                 if (requestValue != null)
                     return requestValue.ToString();
 
@@ -121,22 +84,16 @@ namespace Eisk.Models
             get
             {
                 bool value = false;
-                object requestValue = GetRequestObject(ObjectHelper.GetName(() => Desc));
+                object requestValue = GetRequestObject(nameof(Desc));
                 if (requestValue != null)
                     bool.TryParse(requestValue.ToString(), out value);
                 return value;
             }
         }
 
-        public int ItemsPerPage
-        {
-            get
-            {
-                return GetIntRequestObject(ObjectHelper.GetName(() => ItemsPerPage), 10);
-            }
-        }
+        public int ItemsPerPage => GetIntRequestObject(nameof(ItemsPerPage), 10);
 
-       protected object GetRequestObject(string key)
+        protected object GetRequestObject(string key)
         {
             return ControllerHelper.ViewContext.HttpContext.Request[key];
         }

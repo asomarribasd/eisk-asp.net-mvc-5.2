@@ -176,7 +176,6 @@
     <Compile Include="Helpers\Dependency Injection\Unity\UnityDependencyResolver.cs" />
     <Compile Include="Helpers\Dependency Injection\Unity\UnityHttpContextPerRequestLifetimeManager.cs" />
     <Compile Include="Helpers\Dependency Injection\Unity\UnityPerRequestLifetimeManager.cs" />
-    <Compile Include="Helpers\ObjectHelper.cs" />
     <Compile Include="Helpers\Html Helpers\HtmlConverter.cs" />
     <Compile Include="Helpers\Controller Helpers\ControllerHelper.cs" />
     <Compile Include="Helpers\Controller Helpers\ControllerExtensions.cs" />
