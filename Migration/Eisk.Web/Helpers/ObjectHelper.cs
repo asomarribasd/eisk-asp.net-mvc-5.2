@@ -13,7 +13,6 @@ Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful
    
 *******************************************************/
 
-using System.Reflection;
 using System;
 using System.Linq.Expressions;
 
@@ -24,19 +23,6 @@ namespace Eisk.Helpers
         public static string GetName<T>(Expression<Func<T>> memberExpression)
         {
             return (memberExpression.Body as MemberExpression).Member.Name;
-        }
-
-        public static void CopyPropertiesValueFromBaseType<Entity>(Entity baseSource, Entity destinationChild)
-        {
-            Type type = typeof(Entity);
- 
-            PropertyInfo[] myObjectFields = type.GetProperties(
-                BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-
-            foreach (PropertyInfo fi in myObjectFields)
-            {
-                fi.SetValue(destinationChild, fi.GetValue(baseSource, null), null);
-            }
         }
     }
 }

@@ -14,6 +14,7 @@ Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful
 *******************************************************/
 using System.Collections.Generic;
 using System.Web.Mvc;
+using AutoMapper;
 using Eisk.Helpers;
 
 namespace Eisk.Models
@@ -35,7 +36,8 @@ namespace Eisk.Models
         public EmployeeEditorModel(Employee employee)
         {
             PageTitle = StringHelper.ConnectStrings(" ", employee.TitleOfCourtesy, employee.FirstName, employee.LastName);
-            ObjectHelper.CopyPropertiesValueFromBaseType(employee, this);
+            Mapper.CreateMap<Employee, EmployeeEditorModel>();
+            Mapper.Map(employee, this);
         }
     }
 }
