@@ -154,13 +154,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Initializers\Bootstrap\Data Loader\TestDataHelper.cs" />
+    <Compile Include="Initializers\Context\Data Loader\TestDataHelper.cs" />
     <Compile Include="Initializers\Config\BundleConfig.cs" />
-    <Compile Include="Initializers\Bootstrap\DependencyInjectorInitializer.cs" />
-    <Compile Include="Initializers\Bootstrap\DisplayModelInitializer.cs" />
+    <Compile Include="Initializers\Context\DependencyInjectorInitializer.cs" />
+    <Compile Include="Initializers\Context\DisplayModelInitializer.cs" />
     <Compile Include="Initializers\Config\FilterConfig.cs" />
     <Compile Include="Initializers\Config\RouteConfig.cs" />
-    <Compile Include="Initializers\Bootstrap\Data Loader\DataInitializer.cs" />
+    <Compile Include="Initializers\Context\Data Loader\DataInitializer.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SecurityDemoController.cs" />
@@ -183,7 +183,7 @@
     <Compile Include="Helpers\Html Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Helpers\CountryList.cs" />
-    <Compile Include="Initializers\Bootstrap\Data Loader\DatabaseContextInitializer.cs" />
+    <Compile Include="Initializers\Context\Data Loader\DatabaseContextInitializer.cs" />
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Validation\DateGreaterThanAttribute.cs" />
     <Compile Include="Helpers\Validation\RequiredIfAttribute.cs" />
