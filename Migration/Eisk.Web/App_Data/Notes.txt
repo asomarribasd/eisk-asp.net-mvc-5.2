@@ -98,5 +98,24 @@ Future Editions
 * F#
 * Python
 * Orchard Module
+=======================================================================================
+11:02 AM 9/22/2015
 
-===================================================
+Business Rules
+
+* A supervisor from USA must be 21 years older
+* A supervisor from Bangladesh must be 18 years older
+* A supervisor must have a picture
+* A supervisor can have atmost 10 employees under him
+* A supervisor and employee must belong to same country
+
+* An employee Singapore must be 18 years older
+* An employee address must be unique
+* Note is mandatory for an employee staying more than 1 month
+
+* View employee details requires member privilege
+* View employee DOB requires admin privilege
+* Edit employee details requires admin privilege
+* Delete an employee requires admin privilege
+
+=======================================================================================
