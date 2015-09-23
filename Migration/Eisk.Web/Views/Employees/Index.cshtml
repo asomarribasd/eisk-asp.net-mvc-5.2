@@ -3,42 +3,6 @@
     ViewBag.Title = "Employee Listing";
 }
 
-<script type="text/javascript">
-
-    $("#chkSelectAll").live("click", function(e) {
-        $("INPUT[type='checkbox']").attr('checked', $('#chkSelectAll').is(':checked'));
-    });
-    $("#btnDeleteSelected").live("click", function(event) {
-        if (confirm('Are you sure you want to delete these items?')) {
-
-            var idArray = new Array();
-
-            $("input:checked.deleteCheckbox").each(function(i) {
-                idArray[i] = $(this).attr('pkey');
-            });
-
-            $.ajax({
-                    type: "POST",
-                    url: "DeleteSelected",
-                    dataType: "json",
-                    traditional: true,
-                    data: {
-                        ids: idArray
-                    }
-                })
-                .done(function() {
-                    location.reload();
-                    $("INPUT[type='checkbox']").attr('checked', false);
-                })
-                .fail(function() {
-                    alert('Deletion failed.');
-                });
-        }
-        event.preventDefault();
-    });
-
-</script>
-
 <h1 class="h1">Employee Listing</h1>
 <div class="container ui-margin">
     <div class="row">
@@ -97,3 +61,40 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $("#chkSelectAll").live("click", function(e) {
+            $("INPUT[type='checkbox']").attr('checked', $('#chkSelectAll').is(':checked'));
+        });
+        $("#btnDeleteSelected").live("click", function(event) {
+            if (confirm('Are you sure you want to delete these items?')) {
+
+                var idArray = new Array();
+
+                $("input:checked.deleteCheckbox").each(function(i) {
+                    idArray[i] = $(this).attr('pkey');
+                });
+
+                $.ajax({
+                        type: "POST",
+                        url: "DeleteSelected",
+                        dataType: "json",
+                        traditional: true,
+                        data: {
+                            ids: idArray
+                        }
+                    })
+                    .done(function() {
+                        location.reload();
+                        $("INPUT[type='checkbox']").attr('checked', false);
+                    })
+                    .fail(function() {
+                        alert('Deletion failed.');
+                    });
+            }
+            event.preventDefault();
+        });
+    </script>
+}
