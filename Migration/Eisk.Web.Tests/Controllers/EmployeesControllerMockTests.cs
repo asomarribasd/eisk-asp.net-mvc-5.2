@@ -27,8 +27,7 @@ namespace Eisk.Tests
 
             //Act
             _employeeController.FireValidationForModel(_employee);
-            _employeeController.Edit(_employee);
-
+            
             //Assert
             Assert.True(EmployeeAddressMustBeUnique.IsErrorAvalilableIn(_employeeController, _employee));
         }
@@ -67,8 +66,7 @@ namespace Eisk.Tests
 
             /************* Action ************************************************/
             _employeeController.FireValidationForModel(_employee);
-            _employeeController.Edit(_employee);
-
+            
             /************* Assert ************************************************/
             Assert.True(SupervisorCountryMustBeSame.IsErrorAvalilableIn(_employeeController));
         }

@@ -1,10 +1,25 @@
 =========================
 Test Architecture 
 
-Controller (Unit Tests). Requires Mock/DI
+Controller (Unit Tests). Class Level
+	* Using Moq.Verify 
+Controller (Unit Tests). Object Level
+	* Requires Mock/DI
+
 Controller (Integration Tests: CLR)
 Controller (Integration Tests: REST)
-Domain (Unit Tests) 
+
+Domain (Unit Tests) - Class Level 
+	* whether a particular attribute is set to a propery
+Domain (Unit Tests) - Object Level 
+	* whether a perticular error is triggered when a given domain property contains invalid value
+
 Repositories (Integration Tests)
 
+=========================
+Test Objects 
+
+* Fake 
+* Mock
+* Stub
 =========================

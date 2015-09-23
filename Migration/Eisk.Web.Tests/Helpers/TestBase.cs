@@ -13,6 +13,9 @@ Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful
    
 *******************************************************/
 
+using System;
+using Xunit;
+
 namespace Eisk.Helpers
 {
     public class TestBase
@@ -23,5 +26,13 @@ namespace Eisk.Helpers
             //Initializing depency container in TestInitialize method is required if we want to mix integration and mock test together.
             //DependencyHelper.Initialize();
         }
+
+        protected void AssertValidationAttribute(Type entityType, string fieldName, Type attributeType)
+        {
+            var pi = entityType.GetProperty(fieldName);
+            var hasIsIdentity = Attribute.IsDefined(pi, attributeType);
+            Assert.True(hasIsIdentity);
+        }
+
     }
 }
