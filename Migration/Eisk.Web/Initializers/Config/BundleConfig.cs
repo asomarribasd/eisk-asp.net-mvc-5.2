@@ -22,8 +22,8 @@ namespace Eisk
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/site.css",
                 "~/Content/eisk.css",
-                "~/Content/themes/default/css/bootstrap.css",
-                "~/Content/themes/default/css/bootstrap-theme-3.3.4.min.css"));
+                "~/Content/themes/default/bootstrap/bootstrap.css",
+                "~/Content/themes/default/bootstrap/bootstrap-theme-3.3.4.min.css"));
 
             BundleTable.EnableOptimizations = false;
         }
