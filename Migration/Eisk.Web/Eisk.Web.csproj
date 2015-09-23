@@ -216,7 +216,7 @@
     <Content Include="App_Data\TestData.xml" />
     <Content Include="Content\themes\default\css\bootstrap-theme.3.3.4.min.css" />
     <Content Include="Content\themes\default\css\bootstrap.css" />
-    <Content Include="Content\themes\default\css\eisk.css" />
+    <Content Include="Content\eisk.css" />
     <Content Include="Content\themes\default\css\overcast\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\default\css\overcast\images\ui-bg_flat_0_eeeeee_40x100.png" />
     <Content Include="Content\themes\default\css\overcast\images\ui-bg_flat_55_c0402a_40x100.png" />
@@ -232,7 +232,7 @@
     <Content Include="Content\themes\default\css\overcast\images\ui-icons_999999_256x240.png" />
     <Content Include="Content\themes\default\css\overcast\images\ui-icons_fbc856_256x240.png" />
     <Content Include="Content\themes\default\css\overcast\jquery-ui-1.8.18.custom.css" />
-    <Content Include="Content\themes\default\css\Site.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\themes\default\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\ico-refresh.png" />
     <Content Include="Images\ico-arrow-back.png" />

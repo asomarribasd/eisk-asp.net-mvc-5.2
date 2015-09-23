@@ -17,13 +17,11 @@ namespace Eisk
                 "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/eisk").Include(
-                "~/Scripts/eisk.js",
-                "~/Scripts/eisk-ajax-loader.js",
-                "~/Scripts/eisk-menu.js"));
+                "~/Scripts/eisk.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/themes/default/css/site.css",
-                "~/Content/themes/default/css/eisk.css",
+                "~/Content/site.css",
+                "~/Content/eisk.css",
                 "~/Content/themes/default/css/bootstrap.css",
                 "~/Content/themes/default/css/bootstrap-theme-3.3.4.min.css"));
 

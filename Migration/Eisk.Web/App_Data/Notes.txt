@@ -10,23 +10,16 @@
 * asp.net caching middlewire
 * responseCaching middlewire
 * AOP for domain validation in service lavel
-* nLog implementation
 
+* nLog implementation
 * fix menu 
+* fix ajax loader for admin user list
+
 * do we need the nuget exe for nuget restore?
 * should we include a service layer?
 * tests
 	* understand difference between mock/stub
 	* include record/replay tests 
-
-* cloud implementation
-* java-script implementation
-* mobile view
-* identity implementation + OWIN Katana
-* scafold template
-
-* fix ajax leader for admin user list
-* make sure MVC and API unified controller is being used
 
 DONE * Custom error
 DONE * auto mapper integration
@@ -35,6 +28,17 @@ DONE * default dependency injection
 DONE * upgrade mvc, ef, unity, moq
 DONE * xUnit integration
 DONE * bundle 
+
+ASP.NET 5
+* make sure MVC and API unified controller is being used
+* Default dependency injection
+
+Versions
+* cloud implementation (with no SQL)
+* java-script implementation
+* mobile view
+* scafold template
+* identity implementation + OWIN Katana
 ===================================================
 * Deleted Selected Broken
 * Logging using NLOG
