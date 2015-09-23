@@ -15,53 +15,23 @@ namespace Eisk.Helpers
         {
             if (controller == null)
             {
-                throw new ArgumentNullException("controller");
+                throw new ArgumentNullException(nameof(controller));
             }
 
-            this._controllerContext = controller.ControllerContext;
+            _controllerContext = controller.ControllerContext;
         }
 
-        public ViewContext ViewContext
-        {
-            get
-            {
-                if (_viewContext == null)
-                {
-                    _viewContext = new ViewContext(
-                    _controllerContext,
-                    new InternalView(),
-                    _controllerContext.Controller.ViewData,
-                    _controllerContext.Controller.TempData,
-                    _controllerContext.HttpContext.Response.Output);
-                }
-                return _viewContext;
-            }        
-        }
+        public ViewContext ViewContext => _viewContext ?? (_viewContext = new ViewContext(
+            _controllerContext,
+            new InternalView(),
+            _controllerContext.Controller.ViewData,
+            _controllerContext.Controller.TempData,
+            _controllerContext.HttpContext.Response.Output));
 
-        public UrlHelper Url
-        {
-            get
-            {
-                if (_url == null)
-                {
-                    _url = new UrlHelper(_controllerContext.RequestContext);
-                }
-                return _url;
-            }
-        }
+        public UrlHelper Url => _url ?? (_url = new UrlHelper(_controllerContext.RequestContext));
 
-        public HtmlHelper Html
-        {
-            get
-            {
-                if (_html == null)
-                {
-                    _html = new HtmlHelper(ViewContext, new InternalViewDataContainer(ViewContext.ViewData));
-                }
-                return _html;
-
-            }
-        }
+        public HtmlHelper Html => _html ??
+                                  (_html = new HtmlHelper(ViewContext, new InternalViewDataContainer(ViewContext.ViewData)));
 
         private class InternalView : IView
         {

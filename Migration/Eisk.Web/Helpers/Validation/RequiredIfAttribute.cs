@@ -66,7 +66,7 @@ namespace Eisk.Helpers
             // if it's a bool, format it javascript style 
             // (the default is True or False!)
             string targetValue = (this.TargetValue ?? "").ToString();
-            if (this.TargetValue.GetType() == typeof(bool))
+            if (TargetValue.GetType() == typeof(bool))
                 targetValue = targetValue.ToLower();
 
             rule.ValidationParameters.Add("dependentproperty", depProp);

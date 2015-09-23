@@ -4,7 +4,6 @@ using System.Web;
 
 namespace Eisk.Helpers
 {
-
     public static class Logger
     {
         public static void LogError(Exception ex)

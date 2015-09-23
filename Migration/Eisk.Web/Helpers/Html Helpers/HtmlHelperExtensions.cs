@@ -1,18 +1,4 @@
-﻿/****************** Copyright Notice *****************
- 
-This code is licensed under Microsoft Public License (Ms-PL). 
-You are free to use, modify and distribute any portion of this code. 
-The only requirement to do that, you need to keep the developer name, as provided below to recognize and encourage original work:
-
-=======================================================
-   
-Architecture Designed and Implemented By:
-Mohammad Ashraful Alam
-Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
-Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
-   
-*******************************************************/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Web;
@@ -47,7 +33,7 @@ public static class HtmlHelperExtensions
         return MvcHtmlString.Create(messages);
     }
 
-    public static String RenderRazorViewToString(ControllerContext controllerContext, String viewName, Object model)
+    public static string RenderRazorViewToString(ControllerContext controllerContext, string viewName, Object model)
     {
         controllerContext.Controller.ViewData.Model = model;
 
@@ -72,12 +58,7 @@ public static class HtmlHelperExtensions
         Func<TModel, TProperty> deleg = expression.Compile();
         var result = deleg(htmlHelper.ViewData.Model);
 
-        string value = null;
-
-        if (result.ToString() == DateTime.MinValue.ToString())
-            value = string.Empty;
-        else
-            value = string.Format("{0:M/dd/yyyy}", result);
+        var value = result.ToString() == DateTime.MinValue.ToString() ? string.Empty : $"{result:M/dd/yyyy}";
 
         return htmlHelper.TextBoxFor(expression, new { @class = "datepicker text", Value = value });
     }

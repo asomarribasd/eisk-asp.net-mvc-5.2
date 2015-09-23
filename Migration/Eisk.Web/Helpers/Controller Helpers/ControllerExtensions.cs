@@ -1,22 +1,6 @@
-﻿/****************** Copyright Notice *****************
- 
-This code is licensed under Microsoft Public License (Ms-PL). 
-You are free to use, modify and distribute any portion of this code. 
-The only requirement to do that, you need to keep the developer name, as provided below to recognize and encourage original work:
-
-=======================================================
-   
-Architecture Designed and Implemented By:
-Mohammad Ashraful Alam
-Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
-Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
-   
-*******************************************************/
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Eisk.Helpers
@@ -34,7 +18,7 @@ namespace Eisk.Helpers
 
             foreach (var validationResult in validationResults)
             {
-                if (validationResult.MemberNames.Count() > 0)
+                if (validationResult.MemberNames.Any())
                 {
                     foreach (string memberName in validationResult.MemberNames)
                         controller.ModelState.AddModelError(memberName, validationResult.ErrorMessage);
@@ -93,10 +77,7 @@ namespace Eisk.Helpers
 
         static bool IsErrorAvalilableIn(ModelErrorCollection errors, string errorMessage)
         {
-            foreach (var error in errors)
-                if (error.ErrorMessage == errorMessage)
-                    return true;
-            return false;
+            return errors.Any(error => error.ErrorMessage == errorMessage);
         }
     }
 }
