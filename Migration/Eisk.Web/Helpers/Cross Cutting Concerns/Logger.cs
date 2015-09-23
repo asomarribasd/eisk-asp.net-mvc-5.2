@@ -1,18 +1,3 @@
-/****************** Copyright Notice *****************
- 
-This code is licensed under Microsoft Public License (Ms-PL). 
-You are free to use, modify and distribute any portion of this code. 
-The only requirement to do that, you need to keep the developer name, as provided below to recognize and encourage original work:
-
-=======================================================
-   
-Architecture Designed and Implemented By:
-Mohammad Ashraful Alam
-Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
-Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
-   
-*******************************************************/
-
 using System;
 using System.IO;
 using System.Web;
@@ -22,20 +7,13 @@ namespace Eisk.Helpers
 
     public static class Logger
     {
-        public static void LogError()
-        {
-            System.Exception ex = System.Web.HttpContext.Current.Server.GetLastError();
-            LogError(ex);
-
-        }
-
         public static void LogError(Exception ex)
         {
             var currentContext = HttpContext.Current;
 
             string logSummery, logDetails, filePath = "No file path found.", url = "No url found to be reported.";
 
-            if (currentContext != null)
+            if (currentContext != null && !(ex is HttpException)) //ignore "file not found")
             {
                 filePath = currentContext.Request.FilePath;
                 url = currentContext.Request.Url.AbsoluteUri;

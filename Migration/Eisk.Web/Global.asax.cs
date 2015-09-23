@@ -10,8 +10,6 @@ using System.Web.Optimization;
 using System.Web.Routing;
 namespace Eisk.Web.Global
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
     public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
@@ -26,12 +24,6 @@ namespace Eisk.Web.Global
             DisplayModelInitializer.Init();
             DependencyInjectorInitializer.Init();
             
-        }
-
-        protected void Application_Error(object sender, EventArgs e)
-        {
-            // Code that runs when an unhandled error occurs
-            Logger.LogError();
         }
 
         protected void Application_AuthenticateRequest(Object sender, EventArgs e)
@@ -49,12 +41,12 @@ namespace Eisk.Web.Global
                     System.Security.Principal.IIdentity userId = HttpContext.Current.User.Identity;
 
                     //if role info is already NOT loaded into cache, put the role info in cache
-                    if (System.Web.HttpContext.Current.Cache[userId.Name] == null)
+                    if (HttpContext.Current.Cache[userId.Name] == null)
                     {
                         string[] roles = new string[1] { GetUserRoleByUserName(userId.Name) };
 
                         //1 hour sliding expiring time. Adding the roles in chache. This will be used in Application_AuthenticateRequest event located in Global.ascx.cs file to attach user Principal object.
-                        System.Web.HttpContext.Current.Cache.Add(userId.Name, roles, null, DateTime.MaxValue, TimeSpan.FromHours(1), System.Web.Caching.CacheItemPriority.BelowNormal, null);
+                        HttpContext.Current.Cache.Add(userId.Name, roles, null, DateTime.MaxValue, TimeSpan.FromHours(1), System.Web.Caching.CacheItemPriority.BelowNormal, null);
                     }
 
                     //now assign the user role in the current security context

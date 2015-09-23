@@ -156,6 +156,7 @@
   <ItemGroup>
     <Compile Include="Data Access\DatabaseContext.cs" />
     <Compile Include="Data Access\UserDataAccess.cs" />
+    <Compile Include="Helpers\Filters\CustomExceptionFilter.cs" />
     <Compile Include="Models\Entities\UserInfo.cs" />
     <Compile Include="Initializers\Context\Data Loader\TestDataHelper.cs" />
     <Compile Include="Initializers\Config\BundleConfig.cs" />

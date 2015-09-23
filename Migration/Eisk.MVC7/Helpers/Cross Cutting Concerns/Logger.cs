@@ -24,7 +24,7 @@ namespace Eisk.Helpers
     {
         public static void LogError()
         {
-            System.Exception ex = System.Web.HttpContext.Current.Server.GetLastError();
+            Exception ex = HttpContext.Current.Server.GetLastError();
             LogError(ex);
 
         }
