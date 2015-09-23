@@ -17,7 +17,6 @@ using Eisk.Models;
 
 namespace Eisk.Controllers
 {
-    [RoutePrefix("EmployeeInfo")]
     public class EmployeesController : Controller
     {
         private readonly DatabaseContext _dbContext;
@@ -39,8 +38,6 @@ namespace Eisk.Controllers
             return View(new GridViewModel(this, _dbContext.EmployeeRepository.Count(), "GridData"));
         }
 
-        [Route("EmployeeDetails/{id:int=1}")]
-        //EmployeeInfo/EmployeeDetails/4
         public ActionResult Details(int id)
         {
             var employee = _dbContext.EmployeeRepository.Find(id);
@@ -82,7 +79,6 @@ namespace Eisk.Controllers
             return View("Edit", new EmployeeEditorModel(newEmployee));
         }
 
-        //Employees/Edit/4
         public ActionResult Edit(int id)
         {
             var employee = _dbContext.EmployeeRepository.Find(id);

@@ -7,21 +7,25 @@ using Eisk.Models;
 
 namespace Eisk.Controllers
 {
+    [RoutePrefix("Account")]
     public class SecurityDemoController : Controller
     {
         [Authorize]
+        [Route("")]
         public ViewResult Index()
         {
             return View();
         }
 
         [Authorize]
+        [Route("MemberHome")]
         public ViewResult Member()
         {
             return View();
         }
 
         [Authorize(Roles = "Administrator")]
+        [Route("AdminHome")]
         public ViewResult Admin()
         {
             return View();
