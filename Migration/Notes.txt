@@ -2,26 +2,38 @@
 Test Architecture 
 
 Controller (Unit Tests). Object Level
-PAR	* Requires Mock/DI
+	* Functionality Tests
+	* Requires Mock/DI
 Controller (Unit Tests). Class Level {optional}
+	* Structure Test
 	* Using Moq.Verify 
 	* checks whether a specific method of dependent class (i.e. repository class) is called.
 
 Controller (Integration Tests: Browser Level QA, includes javascript)
+	* Functionality Tests
 Controller (Integration Tests: REST, HTTP level)
-OK Controller (Integration Tests: CLR)
+	* Functionality Tests
+Controller (Integration Tests: CLR)
+	* Functionality Tests
 
 Domain (Unit Tests) - Object Level 
+	* Functionality Tests
 	* whether a perticular error is triggered when a given domain property contains invalid value
 Domain (Unit Tests) - Class Level {optional}
-OK	* whether a particular attribute is set to a propery
+	* Structure Test
+	* whether a particular attribute is set to a property
 
 Repositories (Integration Tests)
 
-Additional Tests
-* Required Assembly Test
-* Client Side resources: image, java-script
-* Framework Test: test some functionaity of a given framework (internal/external) to understand the implementation
+Additional Tests ==========
+
+Required Assembly Test
+	* Structure Test
+Client Side resources: image, java-script
+	* Structure Test
+Framework Test
+	* Framework Test
+	* Test some functionaity of a given framework (internal/external) to understand the implementation
 
 =========================
 Test Level
