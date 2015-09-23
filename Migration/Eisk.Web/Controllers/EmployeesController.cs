@@ -73,7 +73,8 @@ namespace Eisk.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError(string.Empty, ex.ToString());
+                    ModelState.AddModelError(
+                        string.Empty, ExceptionDude.FormatMessage(ex));
                 }
             }
             return View("Edit", new EmployeeEditorModel(newEmployee));
@@ -110,7 +111,7 @@ namespace Eisk.Controllers
                 catch (Exception ex)
                 {
                     ModelState.AddModelError(
-                        string.Empty, ExceptionDude.FormatMessage(ex, true));
+                        string.Empty, ExceptionDude.FormatMessage(ex));
                 }
             }
             return View(new EmployeeEditorModel(existingEmployee));
