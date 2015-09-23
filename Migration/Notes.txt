@@ -24,6 +24,11 @@ Additional Tests
 * Framework Test: test some functionaity of a given framework (internal/external) to understand the implementation
 
 =========================
+Test Level
+P1 * Functionality Tests
+P2 * Structure Test
+P3 * Framework Test
+
 Test Objects
 * Fake 
 * Mock
@@ -33,5 +38,4 @@ Mock Test Types
 * Generic Mock Tests
 * Record/Replay Tests
 * Verify Tests
-
 =========================
