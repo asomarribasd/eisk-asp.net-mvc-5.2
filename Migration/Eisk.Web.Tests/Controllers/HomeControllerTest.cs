@@ -1,5 +1,4 @@
-﻿using System.Web.Mvc;
-using Eisk.Controllers;
+﻿using Eisk.Controllers;
 using Xunit;
 
 namespace Eisk.Tests
@@ -10,14 +9,13 @@ namespace Eisk.Tests
         public void About()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var controller = new HomeController();
 
             // Act
-            ViewResult result = controller.About();
+            var result = controller.About();
 
             // Assert
             Assert.NotNull(result);
         }
-
     }
 }

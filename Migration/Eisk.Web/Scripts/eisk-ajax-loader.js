@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
-    $("#loading-image").ajaxStart(function () {
+    $("#loading-image").ajaxStart(function() {
         $(this).show();
     });
 
-    $("#loading-image").ajaxStop(function () {
+    $("#loading-image").ajaxStop(function() {
         $(this).hide();
     });
 

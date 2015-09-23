@@ -13,6 +13,7 @@
 // organization, product, domain name, email address, logo, person,
 // places, or events is intended or should be inferred.
 //===================================================================================
+
 using System;
 
 namespace Eisk.Helpers
@@ -22,7 +23,6 @@ namespace Eisk.Helpers
         object GetValue(object key);
         void SetValue(object key, object value);
         void RemoveValue(object key);
-
         event EventHandler EndRequest;
     }
 }

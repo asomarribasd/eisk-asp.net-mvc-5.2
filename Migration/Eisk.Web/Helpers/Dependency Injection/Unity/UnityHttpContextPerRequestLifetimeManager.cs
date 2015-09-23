@@ -13,16 +13,17 @@
 // organization, product, domain name, email address, logo, person,
 // places, or events is intended or should be inferred.
 //===================================================================================
+
 namespace Eisk.Helpers
 {
     /// <summary>
-    /// The UnityHttpContextPerRequestLifetimeManager exists solely to make it easier
-    /// to configure the per-request lifetime manager in a configuration file.
+    ///     The UnityHttpContextPerRequestLifetimeManager exists solely to make it easier
+    ///     to configure the per-request lifetime manager in a configuration file.
     /// </summary>
     /// <remarks>
-    /// An alternative approach would be to use a type converter to convert the 
-    /// configuration string and new up a <see cref="UnityPerRequestLifetimeManager"/>
-    /// from this type converter.
+    ///     An alternative approach would be to use a type converter to convert the
+    ///     configuration string and new up a <see cref="UnityPerRequestLifetimeManager" />
+    ///     from this type converter.
     /// </remarks>
     public class UnityHttpContextPerRequestLifetimeManager : UnityPerRequestLifetimeManager
     {

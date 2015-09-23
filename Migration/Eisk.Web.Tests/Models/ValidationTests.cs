@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using Eisk.Models;
 using Xunit;
+
 /****************** Copyright Notice *****************
  
 This code is licensed under Microsoft Public License (Ms-PL). 
@@ -26,38 +27,38 @@ namespace Eisk.Tests
         public void Employee_model_set_with_Ivalidable_objet()
         {
             // Arrange
-            var propertyInfo = typeof(Employee).GetProperty("FirstName");
+            var propertyInfo = typeof (Employee).GetProperty("FirstName");
 
             // Act
-            var attribute = propertyInfo.GetCustomAttributes(typeof(RequiredAttribute), false);
+            var attribute = propertyInfo.GetCustomAttributes(typeof (RequiredAttribute), false);
 
             // Assert
             Assert.NotNull(attribute);
         }
+
         [Fact]
         public void Test_Copy()
         {
-            Employee emp = TestDataHelper.CreateEmployeeWithValidData();
-            Type type = emp.GetType();
-            PropertyInfo[] myObjectFields = type.GetProperties(
+            var emp = TestDataHelper.CreateEmployeeWithValidData();
+            var type = emp.GetType();
+            var myObjectFields = type.GetProperties(
                 BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 
-            foreach (PropertyInfo fi in myObjectFields)
+            foreach (var fi in myObjectFields)
             {
                 Console.WriteLine(fi.ToString());
             }
         }
 
-        private static void UpdateForType(Type type, Object source, Object destination)
+        private static void UpdateForType(Type type, object source, object destination)
         {
-            FieldInfo[] myObjectFields = type.GetFields(
+            var myObjectFields = type.GetFields(
                 BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 
-            foreach (FieldInfo fi in myObjectFields)
+            foreach (var fi in myObjectFields)
             {
                 fi.SetValue(destination, fi.GetValue(source));
             }
         }
-
     }
 }

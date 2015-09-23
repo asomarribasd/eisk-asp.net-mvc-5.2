@@ -13,6 +13,7 @@
 // organization, product, domain name, email address, logo, person,
 // places, or events is intended or should be inferred.
 //===================================================================================
+
 using System;
 using System.Web;
 
@@ -46,12 +47,12 @@ namespace Eisk.Helpers
             HttpContext.Current.Items.Remove(key);
         }
 
+        public event EventHandler EndRequest;
+
         private void EndRequestHandler(object sender, EventArgs e)
         {
-            EventHandler handler = this.EndRequest;
+            var handler = EndRequest;
             if (handler != null) handler(this, e);
         }
-
-        public event EventHandler EndRequest;
     }
 }

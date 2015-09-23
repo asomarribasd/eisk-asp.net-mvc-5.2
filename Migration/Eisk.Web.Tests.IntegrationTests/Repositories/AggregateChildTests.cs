@@ -24,16 +24,16 @@ using Xunit;
 namespace Eisk.IntegrationTests
 {
     /// <summary>
-    /// Rule: The concept of aggregate child is, the entities in the system, which CRUD operation is performed via a agrregate root (i.e.parent foreign key) object.
-    /// * There will be no direct connection between the context class and the aggregate child object.
-    /// 
-    /// Design: In a domain model, the following conditions can be considered to determine aggregate rool (technically, not conceptually):
-    /// * The aggregate child has the parent foreign key as not nullable
-    /// * All rows of the corresponding database table of aggregate child are not required to be accessed at the same time.
-    /// * No aggregate child can be accessed without accessing aggregate root.
+    ///     Rule: The concept of aggregate child is, the entities in the system, which CRUD operation is performed via a
+    ///     agrregate root (i.e.parent foreign key) object.
+    ///     * There will be no direct connection between the context class and the aggregate child object.
+    ///     Design: In a domain model, the following conditions can be considered to determine aggregate rool (technically, not
+    ///     conceptually):
+    ///     * The aggregate child has the parent foreign key as not nullable
+    ///     * All rows of the corresponding database table of aggregate child are not required to be accessed at the same time.
+    ///     * No aggregate child can be accessed without accessing aggregate root.
     /// </summary>
-    
-    public class AggregateChildTests:IntegrationTestBase
+    public class AggregateChildTests : IntegrationTestBase
     {
         [Fact]
         public void InsertAggregateChildToNewAggregateRootObject()
@@ -62,7 +62,6 @@ namespace Eisk.IntegrationTests
         [Fact]
         public void InsertAggregateChildToAggregateRoot()
         {
-
             TestInitialize();
 
             DatabaseContext ctx = new DatabaseContext();
@@ -86,7 +85,6 @@ namespace Eisk.IntegrationTests
         [Fact]
         public void ReadAggregateChildFromAggregateRoot()
         {
-
             DatabaseContext ctx = new DatabaseContext();
 
             Employee supervisorEmployee = ctx.EmployeeRepository.Find(1);
@@ -94,13 +92,11 @@ namespace Eisk.IntegrationTests
             Employee subordinateEmployee = supervisorEmployee.Subordinates.Find(e => e.Id == 3);
 
             Assert.Equal("Mostofa", subordinateEmployee.FirstName);
-            
         }
 
         [Fact]
         public void UpdatedAggregateChildFromAggregateRoot()
         {
-
             TestInitialize();
 
             DatabaseContext ctx = new DatabaseContext();
@@ -110,13 +106,12 @@ namespace Eisk.IntegrationTests
             Employee subordinateEmployee = supervisorEmployee.Subordinates.Find(e => e.Id == 3);
 
             subordinateEmployee.FirstName = "Md.";
-             
+
             ctx.SaveChanges();
 
             Employee sub = ctx.EmployeeRepository.Find(3);
 
             Assert.Equal("Md.", sub.FirstName);
-
         }
 
         [Fact]
@@ -131,15 +126,14 @@ namespace Eisk.IntegrationTests
 
             Employee subordinateEmployee = supervisorEmployee.Subordinates.Find(e => e.Id == 3);
             supervisorEmployee2.Subordinates.Add(subordinateEmployee);
-            
+
             ctx.SaveChanges();
-            
+
             int actualCount = (from e in ctx.EmployeeRepository select e).ToList().Count;
 
             Assert.Equal(14, actualCount);
             Assert.Equal(9, supervisorEmployee.Subordinates.Count);
             Assert.Equal(3, supervisorEmployee2.Subordinates.Count);
-
         }
 
         [Fact]
@@ -153,8 +147,9 @@ namespace Eisk.IntegrationTests
 
             Employee subordinateEmployee = supervisorEmployee.Subordinates.Find(e => e.Id == 3);
 
-            supervisorEmployee.Subordinates.Remove(subordinateEmployee);//updates child's parent reference (foreign) to null
-            
+            supervisorEmployee.Subordinates.Remove(subordinateEmployee);
+                //updates child's parent reference (foreign) to null
+
             ctx.SaveChanges();
 
             int actualCount = (from e in ctx.EmployeeRepository select e).ToList().Count;
@@ -162,7 +157,6 @@ namespace Eisk.IntegrationTests
             Assert.Equal(14, actualCount);
 
             Assert.Equal(9, supervisorEmployee.Subordinates.Count);
-
         }
 
         [Fact]
@@ -185,7 +179,7 @@ namespace Eisk.IntegrationTests
              * NEED TO CHECK: For a composite child key, the corresponding row will be physically deleted!?
             *************************************/
             //supervisorEmployee.Subordinates.Remove(subordinateEmployee);
-            
+
             ctx.Entry(subordinateEmployee).State = EntityState.Deleted;
 
             ctx.SaveChanges();
@@ -195,7 +189,6 @@ namespace Eisk.IntegrationTests
             Assert.Equal(13, actualCount);
 
             Assert.Equal(9, supervisorEmployee.Subordinates.Count);
-
         }
 
         [Fact]
@@ -208,15 +201,15 @@ namespace Eisk.IntegrationTests
             Employee supervisorEmployee = ctx.EmployeeRepository.Find(1);
 
             List<Employee> subordinates = (
-                    from employee in
-                        ctx.EmployeeRepository
-                    where employee.ReportsTo == 1
-                    select employee
-                    ).ToList();
+                from employee in
+                    ctx.EmployeeRepository
+                where employee.ReportsTo == 1
+                select employee
+                ).ToList();
 
             foreach (Employee sub in subordinates)
                 ctx.EmployeeRepository.Remove(sub);
-            
+
             ctx.Entry(supervisorEmployee).State = EntityState.Deleted;
 
             ctx.SaveChanges();
@@ -224,8 +217,6 @@ namespace Eisk.IntegrationTests
             int actualCount = (from e in ctx.EmployeeRepository select e).ToList().Count;
 
             Assert.Equal(3, actualCount);
-
         }
-      
     }
 }

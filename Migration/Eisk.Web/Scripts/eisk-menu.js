@@ -21,23 +21,23 @@ Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful
 // Config Values
 //**************************************************************************
 
-var defaultParentManuId = 'ParentMenu'; 
-var defaultChildMenuId = 'ChildMenuContainer';
-var defaultParentManuAttributeForChildMenu = 'ChildMenuContainerId';
+var defaultParentManuId = "ParentMenu";
+var defaultChildMenuId = "ChildMenuContainer";
+var defaultParentManuAttributeForChildMenu = "ChildMenuContainerId";
 var enableMouseEvents = true;
 
 //**************************************************************************
 // Calling data binding method
 //**************************************************************************
 
-$(document).ready(function () { BindMenuItems(); });
+$(document).ready(function() { BindMenuItems(); });
 
 //**************************************************************************
 // Defining data binding methods
 //**************************************************************************
 
 function BindMenuItems() {
-    
+
     HideSubMenus();
     LoadMenuByPath(location.pathname, true);
 
@@ -46,25 +46,25 @@ function BindMenuItems() {
     //**************************************************************************
 
     if (enableMouseEvents == true) {
-        $("#" + defaultParentManuId + ' a').mouseover(
-            function () {
+        $("#" + defaultParentManuId + " a").mouseover(
+            function() {
                 HideSubMenus();
-                var mouseHoverMenuPath = $(this).attr('href');
+                var mouseHoverMenuPath = $(this).attr("href");
                 LoadMenuByPath(mouseHoverMenuPath, false);
             }
-        );  //mouseover ends
+        ); //mouseover ends
 
         //ISSUE: when the user mouse overs another menu during the mouse leave time, the mouseover functionality get lost! 
         $("#" + defaultParentManuId).mouseleave(
-            function () {
-                setTimeout(function () {
+            function() {
+                setTimeout(function() {
                     HideSubMenus();
                     LoadMenuByPath(location.pathname, true);
                 }, 1000); //setTimeout ends
             }
         ); //mouseleave ends
     }
-}  //BindMenuItems function ends
+} //BindMenuItems function ends
 
 //**************************************************************************
 // Utility methods
@@ -80,8 +80,7 @@ function LoadMenuByPath(path, addStyle) {
     if (itemIndex == -1) {
         item = $("#" + defaultParentManuId).find("a[href='" + path + "']");
         itemIndex = item.index();
-    }
-    else
+    } else
         parentItem = $("#" + defaultParentManuId).children().eq(itemIndex);
 
     //if child or parent menu is found
@@ -89,9 +88,9 @@ function LoadMenuByPath(path, addStyle) {
         ShowSubMenu(itemIndex);
         if (addStyle == true) {
             //for child menu, it applies to child css, otherwise it applies to parent menu
-            $(item).addClass('current');
+            $(item).addClass("current");
             if (parentItem != null)
-                $(parentItem).addClass('current');
+                $(parentItem).addClass("current");
         }
     }
 } //LoadMenuByPath ends
@@ -100,7 +99,7 @@ function HideSubMenus() {
     //find the child menu container id
     var childMenuContainerId = GetChildMenuContainerId();
     $("#" + childMenuContainerId + " div").hide();
-}  //HideSubMenus ends
+} //HideSubMenus ends
 
 function ShowSubMenu(showIndex) {
     var childMenuContainer = $("#" + GetChildMenuContainerId());
@@ -110,7 +109,7 @@ function ShowSubMenu(showIndex) {
         if (childMenuToShow != null)
             $(childMenuToShow).show();
     }
-}  //ShowSubMenu ends
+} //ShowSubMenu ends
 
 function GetChildMenuContainerId() {
     //find the child menu container id
@@ -120,5 +119,4 @@ function GetChildMenuContainerId() {
         childMenuContainerId = defaultChildMenuId;
 
     return childMenuContainerId;
-}  //GetChildMenuContainerId ends
-
+} //GetChildMenuContainerId ends

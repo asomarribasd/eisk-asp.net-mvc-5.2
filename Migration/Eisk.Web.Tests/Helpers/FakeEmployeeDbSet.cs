@@ -12,6 +12,7 @@ Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
 Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
+
 using System.Linq;
 using Eisk.Models;
 
@@ -21,7 +22,7 @@ namespace Eisk.Helpers
     {
         public override Employee Find(params object[] keyValues)
         {
-            return this.SingleOrDefault(e => e.Id == (int)keyValues.Single());
+            return this.SingleOrDefault(e => e.Id == (int) keyValues.Single());
         }
     }
 }

@@ -8,14 +8,16 @@ namespace Eisk.Models
 {
     public class LookUpModelSet
     {
+        private static SelectList _countrySelectList;
+
         public static IEnumerable<SelectListItem> SupervisorSelectList
         {
             get
             {
-                IEnumerable<Employee> supervisors =
+                var supervisors =
                     DependencyHelper.GetInstance<DatabaseContext>().EmployeeRepository.AsEnumerable();
 
-                IEnumerable<SelectListItem> supervisorSelectList =
+                var supervisorSelectList =
                     supervisors.Select(option => new SelectListItem
                     {
                         Text = option.FirstName + " " + option.LastName,
@@ -26,7 +28,7 @@ namespace Eisk.Models
             }
         }
 
-        static SelectList _countrySelectList;
-        public static SelectList CountrySelectList => _countrySelectList ?? (_countrySelectList = new SelectList(CountryList.Countries));
+        public static SelectList CountrySelectList
+            => _countrySelectList ?? (_countrySelectList = new SelectList(CountryList.Countries));
     }
 }

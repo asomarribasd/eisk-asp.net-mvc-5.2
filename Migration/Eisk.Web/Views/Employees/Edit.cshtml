@@ -3,7 +3,7 @@
 <script src="@Url.Content("~/Scripts/eisk-required-if-validation.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery-ui-1.8.18.custom.min.js")" type="text/javascript"></script>
 <script type="text/javascript">
-    $(function () {
+    $(function() {
         $(".datepicker").datepicker({
             changeMonth: true,
             changeYear: true,
@@ -14,15 +14,13 @@
 </script>
 <script type="text/javascript">
 
-    $("#anim").change(function () {
+    $("#anim").change(function() {
         $("#datepicker").datepicker("option", "showAnim", $(this).val());
     });
 
 </script>
 <style type="text/css">
-    .bs-example {
-        margin: 20px;
-    }
+    .bs-example { margin: 20px; }
 </style>
 
 @model Eisk.Models.EmployeeEditorModel
@@ -31,9 +29,8 @@
 }
 
 @using (Html.BeginForm(Model.EditorAction, "Employees", FormMethod.Post,
-                                       new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    new {enctype = "multipart/form-data", @class = "form-horizontal"}))
 {
-
     @Html.ValidationSummary(true)
     <h1 class="h1">
         @Model.PageTitle
@@ -115,7 +112,7 @@
                 </div>
             </div>
         </div>
-        <br />
+        <br/>
         <div class="row">
             <div class="col-xs-4">
                 <div class="input-group">
@@ -143,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <br />
+        <br/>
         <div class="row">
             <div class="col-xs-4">
                 <div class="input-group">
@@ -170,9 +167,9 @@
         <div class="row">
             <div class="col-xs-4">
                 <div class="input-group">
-                    Picture:<br />
-                    <img id="employeeImage" alt="employee image" class="profile-image" src="/Images/noimage.gif" />
-                    <br /><br />
+                    Picture:<br/>
+                    <img id="employeeImage" alt="employee image" class="profile-image" src="/Images/noimage.gif"/>
+                    <br/><br/>
                     <input type="file" class="form-control" placeholder="Picture">
                 </div>
             </div>
@@ -183,7 +180,7 @@
                 <div class="input-group">
                     <input type="submit" class="btn btn-primary" value="Submit">
                     @*<input type="reset" class="btn btn-default" value="Reset">*@
-                    <br />
+                    <br/>
                     <div>
                         <em>Required fields are marked with *</em>
                     </div>

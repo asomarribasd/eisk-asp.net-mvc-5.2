@@ -1,22 +1,25 @@
 ﻿/************************************************************************************************************************************************
 *   Designed and Implemented By: Ashraf Alam, Microsoft MVP | Github: https://github.com/ashrafalam   | Blog: http://weblogs.asp.net/ashraful   *                
 *************************************************************************************************************************************************/
-using Eisk.DataAccess;
-using Eisk.Helpers;
-using Eisk.Models;
+
 using System;
 using System.Data.Entity;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using Eisk.DataAccess;
+using Eisk.Helpers;
+using Eisk.Models;
 
 namespace Eisk.Controllers
 {
     public class EmployeesController : Controller
     {
-        readonly DatabaseContext _dbContext;
+        private readonly DatabaseContext _dbContext;
 
         public EmployeesController(DatabaseContext databaseContext)
         {
@@ -37,12 +40,12 @@ namespace Eisk.Controllers
 
         public ActionResult Details(int id)
         {
-            Employee employee = _dbContext.EmployeeRepository.Find(id);
+            var employee = _dbContext.EmployeeRepository.Find(id);
 
             if (employee == null)
             {
                 this.ShowMessage("Sorry no employee found with id: " + id
-                    + ". You've been redirected to the default page instead.", MessageType.Danger);
+                                 + ". You've been redirected to the default page instead.", MessageType.Danger);
 
                 return RedirectToAction("Index");
             }
@@ -66,7 +69,7 @@ namespace Eisk.Controllers
                     _dbContext.EmployeeRepository.Add(newEmployee);
                     _dbContext.SaveChanges();
                     this.ShowMessage("Employee created successfully", MessageType.Success);
-                    return RedirectToAction("Edit", new { Id = newEmployee.Id });
+                    return RedirectToAction("Edit", new {newEmployee.Id});
                 }
                 catch (Exception ex)
                 {
@@ -78,12 +81,12 @@ namespace Eisk.Controllers
 
         public ActionResult Edit(int id)
         {
-            Employee employee = _dbContext.EmployeeRepository.Find(id);
+            var employee = _dbContext.EmployeeRepository.Find(id);
 
             if (employee == null)
             {
                 this.ShowMessage("Sorry no employee found with id: " + id
-                    + ". You've been redirected to the default page instead.", MessageType.Danger);
+                                 + ". You've been redirected to the default page instead.", MessageType.Danger);
 
                 return RedirectToAction("Index");
             }
@@ -115,20 +118,19 @@ namespace Eisk.Controllers
 
         public void Delete(int id)
         {
-            Employee employee = _dbContext.EmployeeRepository.Find(id);
+            var employee = _dbContext.EmployeeRepository.Find(id);
             _dbContext.EmployeeRepository.Remove(employee);
             _dbContext.SaveChanges();
         }
 
         public void DeleteSelected(int[] ids)
         {
-            foreach (int id in ids)
+            foreach (var id in ids)
             {
-                Employee employee = _dbContext.EmployeeRepository.Find(id);
+                var employee = _dbContext.EmployeeRepository.Find(id);
                 _dbContext.EmployeeRepository.Remove(employee);
             }
             _dbContext.SaveChanges();
-
         }
 
         #region Image Upload Related Methods
@@ -137,9 +139,9 @@ namespace Eisk.Controllers
         {
             if (image == null)
             {
-                Image img = Image.FromFile(Server.MapPath("~/Images/noimage.gif"));
-                MemoryStream ms = new MemoryStream();
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                var img = Image.FromFile(Server.MapPath("~/Images/noimage.gif"));
+                var ms = new MemoryStream();
+                img.Save(ms, ImageFormat.Gif);
                 image = ms.ToArray();
             }
 
@@ -148,19 +150,18 @@ namespace Eisk.Controllers
 
         public FileContentResult EmployeeImageFile(int id)
         {
-            Employee employee = _dbContext.EmployeeRepository.Find(id);
+            var employee = _dbContext.EmployeeRepository.Find(id);
 
             var byteArray = (employee == null || employee.Id == 0 ? null : employee.Photo);
 
             return RenderImage(byteArray);
-
         }
 
         public FileContentResult AjaxImageUpload()
         {
-            System.Threading.Thread.Sleep(2000);
+            Thread.Sleep(2000);
             Session["AjaxPhoto"] = GetImageFromUpload();
-            return RenderImage((byte[])Session["AjaxPhoto"]);
+            return RenderImage((byte[]) Session["AjaxPhoto"]);
         }
 
         public FileContentResult DiscardUploadededImage(int id)
@@ -181,12 +182,12 @@ namespace Eisk.Controllers
 
 
             //--Initialise the size of the array
-            byte[] file = new byte[postedFile.InputStream.Length];
+            var file = new byte[postedFile.InputStream.Length];
 
             //--Create a new BinaryReader and set the InputStream
             //-- for the Images InputStream to the
             //--beginning, as we create the img using a stream.
-            BinaryReader reader =
+            var reader =
                 new BinaryReader(postedFile.InputStream);
             postedFile.InputStream.Seek(0, SeekOrigin.Begin);
 
@@ -196,17 +197,17 @@ namespace Eisk.Controllers
             return file;
         }
 
-        void LoadEmployeeImageToObject(Employee employee)
+        private void LoadEmployeeImageToObject(Employee employee)
         {
             if (Request != null)
             {
-                byte[] uploadedImageFromFileControl = GetImageFromUpload();
-                bool removeImage = Request["removeImage"] == "on";
+                var uploadedImageFromFileControl = GetImageFromUpload();
+                var removeImage = Request["removeImage"] == "on";
 
                 //retrieving image file from ajax upload
                 if (Session["AjaxPhoto"] != null)
                 {
-                    employee.Photo = (byte[])Session["AjaxPhoto"];
+                    employee.Photo = (byte[]) Session["AjaxPhoto"];
                     //Clear Employee Ajax Photo, so that it couldn't make any impact to other employee operation
                     Session["AjaxPhoto"] = null;
                 }
@@ -216,14 +217,13 @@ namespace Eisk.Controllers
                 //if RemoveImage is checked, set employee photo as null
                 else if (removeImage)
                     employee.Photo = null;
-                else if (employee.Id != 0)//load image from db
+                else if (employee.Id != 0) //load image from db
                 {
-                    Employee oldEmployeeData = _dbContext.EmployeeRepository.Find(employee.Id);
+                    var oldEmployeeData = _dbContext.EmployeeRepository.Find(employee.Id);
                     _dbContext.Entry(oldEmployeeData).State = EntityState.Detached;
                     employee.Photo = oldEmployeeData.Photo;
                 }
             }
-
         }
 
         #endregion

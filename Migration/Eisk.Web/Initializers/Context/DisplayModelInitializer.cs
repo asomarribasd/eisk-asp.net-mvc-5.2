@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.WebPages;
+
 namespace Eisk
 {
     public class DisplayModelInitializer
@@ -12,7 +13,7 @@ namespace Eisk
             InsertDisplayMode("AndroidTablet");
         }
 
-        static void InsertDisplayMode(string device)
+        private static void InsertDisplayMode(string device)
         {
             //support for specific browser
             DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode(device)
@@ -21,7 +22,5 @@ namespace Eisk
                     (device, StringComparison.OrdinalIgnoreCase) >= 0)
             });
         }
-
-        
     }
 }

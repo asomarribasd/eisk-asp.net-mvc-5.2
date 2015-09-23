@@ -5,35 +5,34 @@
 
 <script type="text/javascript">
 
-    $("#chkSelectAll").live("click", function (e) {
+    $("#chkSelectAll").live("click", function(e) {
         $("INPUT[type='checkbox']").attr('checked', $('#chkSelectAll').is(':checked'));
     });
-    $("#btnDeleteSelected").live("click", function (event) {
+    $("#btnDeleteSelected").live("click", function(event) {
         if (confirm('Are you sure you want to delete these items?')) {
 
             var idArray = new Array();
 
-            $("input:checked.deleteCheckbox").each(function (i) {
+            $("input:checked.deleteCheckbox").each(function(i) {
                 idArray[i] = $(this).attr('pkey');
             });
 
             $.ajax({
-                type: "POST",
-                url: "DeleteSelected",
-                dataType: "json",
-                traditional: true,
-                data: {
-                    ids: idArray
-                }
-            })
-            .done(function () {
-                location.reload();
-                $("INPUT[type='checkbox']").attr('checked', false);
-            })
-            .fail(function () {
-                alert('Deletion failed.');
-            })
-            ;
+                    type: "POST",
+                    url: "DeleteSelected",
+                    dataType: "json",
+                    traditional: true,
+                    data: {
+                        ids: idArray
+                    }
+                })
+                .done(function() {
+                    location.reload();
+                    $("INPUT[type='checkbox']").attr('checked', false);
+                })
+                .fail(function() {
+                    alert('Deletion failed.');
+                });
         }
         event.preventDefault();
     });
@@ -52,7 +51,7 @@
     </div>
     <div class="row">
         <p>
-            <input id="btnDeleteSelected" type="button" class="btn btn-success" value="Delete Selected" />
+            <input id="btnDeleteSelected" type="button" class="btn btn-success" value="Delete Selected"/>
         </p>
 
     </div>
@@ -60,43 +59,41 @@
         <div>
             <table class="table">
                 <thead>
-                    <tr>
-                        <th>
-                            <input type="checkbox" id="chkSelectAll" />
-                        </th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Country</th>
-                        <th>Sub #</th>
-                        <th>View</th>
-                        <th>Edit</th>
-                    </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="chkSelectAll"/>
+                    </th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Country</th>
+                    <th>Sub #</th>
+                    <th>View</th>
+                    <th>Edit</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @{int toggleRowColorCounter = 0;}
-                    @foreach (var item in Model)
-                    {
+                @{ var toggleRowColorCounter = 0; }
+                @foreach (var item in Model)
+                {
+                    <tr class="@(toggleRowColorCounter++%2 == 0 ? "info" : "success")">
+                        <td>
+                            <input type="checkbox" class="deleteCheckbox" pkey="@item.Id">
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Address.Country)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Subordinates.Count)</td>
+                        <td>
+                            <a href="@Url.Action("Details", new {id = item.Id})">View</a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", new {id = item.Id})">Edit</a>
+                        </td>
 
-                        <tr class="@(toggleRowColorCounter++ % 2 == 0 ? "info" : "success")">
-                            <td>
-                                <input type="checkbox" class="deleteCheckbox" pkey="@item.Id">
-                            </td>
-                            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Address.Country)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Subordinates.Count)</td>
-                            <td>
-                                <a href="@Url.Action("Details", new { id = item.Id })">View</a>
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Edit", new { id = item.Id })">Edit</a>
-                            </td>
-
-                        </tr>
-                    }
+                    </tr>
+                }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-

@@ -12,6 +12,5 @@
             //Generate test data
             TestDataHelper.InitializeSchemaAndData(@"..\..\..\Eisk.Web\App_Data\TestData.xml");
         }
-        
     }
 }

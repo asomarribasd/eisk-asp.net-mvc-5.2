@@ -3,7 +3,6 @@
     public class MessageViewModel
     {
         public MessageType MessageType { get; set; }
-        public string Message {get;set;}
-     
+        public string Message { get; set; }
     }
 }

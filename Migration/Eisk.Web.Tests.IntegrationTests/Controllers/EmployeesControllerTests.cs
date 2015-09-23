@@ -39,7 +39,6 @@ namespace Eisk.IntegrationTests
 
             //Assert
             Assert.True(controller.ModelState.IsValid);
-
         }
 
         [Fact]
@@ -78,8 +77,6 @@ namespace Eisk.IntegrationTests
             //Assert
             Assert.NotNull(result);
             Assert.False(controller.ModelState.IsValid);
-
         }
-
     }
 }

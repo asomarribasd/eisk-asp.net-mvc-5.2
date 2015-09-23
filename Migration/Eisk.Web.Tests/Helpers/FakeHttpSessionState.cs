@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web;
+
 /****************** Copyright Notice *****************
  
 This code is licensed under Microsoft Public License (Ms-PL). 
@@ -19,8 +20,7 @@ namespace Eisk.Helpers
 {
     public class FakeHttpSessionState : HttpSessionStateBase
     {
-
-        Dictionary<string, object> m_SessionStorage = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> m_SessionStorage = new Dictionary<string, object>();
 
         public override object this[string name]
         {

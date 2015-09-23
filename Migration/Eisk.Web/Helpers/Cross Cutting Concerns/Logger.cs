@@ -21,13 +21,14 @@ namespace Eisk.Helpers
 
                 //-----------------------------------------------------
 
-                string path = currentContext.Server.MapPath("~/App_Data/log.txt");
-                FileStream fStream = new FileStream(path, FileMode.Append, FileAccess.Write);
-                BufferedStream bfs = new BufferedStream(fStream);
-                StreamWriter sWriter = new StreamWriter(bfs);
+                var path = currentContext.Server.MapPath("~/App_Data/log.txt");
+                var fStream = new FileStream(path, FileMode.Append, FileAccess.Write);
+                var bfs = new BufferedStream(fStream);
+                var sWriter = new StreamWriter(bfs);
 
                 //insert a separator line
-                sWriter.WriteLine("=================================================================================================");
+                sWriter.WriteLine(
+                    "=================================================================================================");
 
                 //create log for header
                 sWriter.WriteLine(logSummery);
@@ -39,14 +40,11 @@ namespace Eisk.Helpers
                 sWriter.WriteLine(logDetails);
 
                 //insert a separator line
-                sWriter.WriteLine("=================================================================================================");
+                sWriter.WriteLine(
+                    "=================================================================================================");
 
                 sWriter.Close();
             }
-
         }
     }
 }
-
-
-

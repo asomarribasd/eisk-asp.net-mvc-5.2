@@ -10,7 +10,8 @@ namespace Eisk.Models
         public int Id { get; set; }
 
         [StringLength(25)]
-        [RegularExpression("^(Mr.|Dr.|Mrs.|Ms.)(, (?!\\1)(Mr.|Dr.|Mrs.|Ms.))*$", ErrorMessage = "Allowed values: Mr. , Dr., Mrs. , Ms.")]
+        [RegularExpression("^(Mr.|Dr.|Mrs.|Ms.)(, (?!\\1)(Mr.|Dr.|Mrs.|Ms.))*$",
+            ErrorMessage = "Allowed values: Mr. , Dr., Mrs. , Ms.")]
         [Display(Name = "Title of Courtesy")]
         //[DisplayFormat(ApplyFormatInEditMode = true, NullDisplayText = "No note provided yet.")]
         public string TitleOfCourtesy { get; set; }
@@ -43,6 +44,5 @@ namespace Eisk.Models
 
         [Column(TypeName = "image")]
         public byte[] Photo { get; set; }
-
     }
 }

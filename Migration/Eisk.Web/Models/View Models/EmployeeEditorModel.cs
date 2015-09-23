@@ -7,13 +7,6 @@ namespace Eisk.Models
 {
     public class EmployeeEditorModel : Employee
     {
-        public IEnumerable<SelectListItem> SupervisorSelectList => LookUpModelSet.SupervisorSelectList;
-
-        public SelectList CountrySelectList => LookUpModelSet.CountrySelectList;
-
-        public string PageTitle { get; private set; }
-        public string EditorAction => Id == 0 ? "Create" : "Edit";
-
         public EmployeeEditorModel()
         {
             PageTitle = "New Employee";
@@ -25,5 +18,10 @@ namespace Eisk.Models
             Mapper.CreateMap<Employee, EmployeeEditorModel>();
             Mapper.Map(employee, this);
         }
+
+        public IEnumerable<SelectListItem> SupervisorSelectList => LookUpModelSet.SupervisorSelectList;
+        public SelectList CountrySelectList => LookUpModelSet.CountrySelectList;
+        public string PageTitle { get; private set; }
+        public string EditorAction => Id == 0 ? "Create" : "Edit";
     }
 }

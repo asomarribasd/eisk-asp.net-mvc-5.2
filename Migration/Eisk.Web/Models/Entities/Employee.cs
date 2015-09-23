@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Eisk.Helpers;
 using System.ComponentModel.DataAnnotations.Schema;
+using Eisk.Helpers;
 
 namespace Eisk.Models
 {
@@ -24,6 +24,5 @@ namespace Eisk.Models
         public virtual Employee Supervisor { get; set; }
 
         public virtual List<Employee> Subordinates { get; set; }
-
     }
 }

@@ -6,12 +6,12 @@
         @if (ViewContext.HttpContext.GetOverriddenBrowser().IsMobileDevice)
         {
             @: Displaying mobile view
-            @Html.ActionLink("Desktop view", "SwitchView", "Home", new { mobile = false, returnUrl = Request.Url.PathAndQuery }, new { rel = "external" })
-        } 
-        else 
+            @Html.ActionLink("Desktop view", "SwitchView", "Home", new {mobile = false, returnUrl = Request.Url.PathAndQuery}, new {rel = "external"})
+        }
+        else
         {
             @: Displaying desktop view
-            @Html.ActionLink("Mobile view", "SwitchView", "Home", new { mobile = true, returnUrl = Request.Url.PathAndQuery }, new { rel = "external" })
+            @Html.ActionLink("Mobile view", "SwitchView", "Home", new {mobile = true, returnUrl = Request.Url.PathAndQuery}, new {rel = "external"})
         }
     </div>
 }

@@ -12,10 +12,12 @@ Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
 Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
+
 using System;
 using System.Web.Mvc;
 using System.Web.WebPages;
 using Eisk.Helpers;
+
 namespace Eisk.Controllers
 {
     public class HomeController : Controller
@@ -39,16 +41,17 @@ namespace Eisk.Controllers
         {
             try
             {
-                TestDataHelper.InitializeSchemaAndData(System.Web.HttpContext.Current.Server.MapPath("~/App_Data/TestData.xml"));
+                TestDataHelper.InitializeSchemaAndData(
+                    System.Web.HttpContext.Current.Server.MapPath("~/App_Data/TestData.xml"));
                 this.ShowMessage("Test data generated successfully", MessageType.Success);
             }
             catch (Exception ex)
             {
-                this.ShowMessage("Error on test data generation with the following details " + ex.Message, MessageType.Danger);
+                this.ShowMessage("Error on test data generation with the following details " + ex.Message,
+                    MessageType.Danger);
             }
 
             return RedirectToAction("Index");
-
         }
 
         public RedirectResult SwitchView(bool mobile, string returnUrl)

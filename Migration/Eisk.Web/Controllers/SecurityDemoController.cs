@@ -12,15 +12,16 @@ Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
 Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
+
+using System.Threading;
+using System.Web.Mvc;
+using System.Web.Security;
+using Eisk.DataAccess;
+using Eisk.Helpers;
+using Eisk.Models;
+
 namespace Eisk.Controllers
 {
-    using System.Web.Mvc;
-    using System.Web.Security;
-    using Helpers;
-    using Models;
-    using DataAccess;
-
-
     public class SecurityDemoController : Controller
     {
         [Authorize]
@@ -32,7 +33,7 @@ namespace Eisk.Controllers
         [Authorize]
         public ViewResult Member()
         {
-           return View();
+            return View();
         }
 
         [Authorize(Roles = "Administrator")]
@@ -44,16 +45,17 @@ namespace Eisk.Controllers
         public ViewResult LogOn()
         {
             if (Request.QueryString["ReturnUrl"] != null)
-                this.ShowMessage("You need to log-on first with appropriate role to access the page you requested.", MessageType.Info, false);
+                this.ShowMessage("You need to log-on first with appropriate role to access the page you requested.",
+                    MessageType.Info, false);
             return View();
         }
 
         [HttpPost]
         public ActionResult LogOn(LoginViewModel loginViewModel)
         {
-            UserInfo user = UserDataAccess.Validate(loginViewModel.Email, loginViewModel.Password);
+            var user = UserDataAccess.Validate(loginViewModel.Email, loginViewModel.Password);
 
-            if (user != null)//if the log-in is successful
+            if (user != null) //if the log-in is successful
             {
                 FormsAuthentication.RedirectFromLoginPage(user.UserName, loginViewModel.RememberMe);
 
@@ -70,7 +72,6 @@ namespace Eisk.Controllers
                 this.ShowMessage("Invalid user name or password", MessageType.Danger, false);
 
             return View();
-
         }
 
         public ViewResult LogOff()
@@ -83,7 +84,7 @@ namespace Eisk.Controllers
 
         public JsonResult GetAllUsers()
         {
-            System.Threading.Thread.Sleep(2000);
+            Thread.Sleep(2000);
             return new JsonResult
             {
                 Data = UserDataAccess.GetAll(),

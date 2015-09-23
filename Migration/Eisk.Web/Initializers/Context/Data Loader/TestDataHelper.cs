@@ -35,7 +35,6 @@ namespace Eisk
                 Photo = null,
                 Notes = "Coding geek.",
                 ReportsTo = null
-
             };
         }
 
@@ -49,34 +48,33 @@ namespace Eisk
 
         public static List<Employee> GetEmployeeDataFromXml(string filePath)
         {
-            XDocument xDoc = XDocument.Load(filePath);
+            var xDoc = XDocument.Load(filePath);
             return (from xElement in xDoc.Descendants("Employees")
                 let dateTimeValue = xElement.GetDateTimeValue(nameof(Employee.HireDate))
                 where dateTimeValue != null
                 select new Employee
+                {
+                    //Id = int.Parse(e.Element("Id").Value),
+                    LastName = xElement.GetStringValue(nameof(Employee.LastName)),
+                    FirstName = xElement.GetStringValue(nameof(Employee.FirstName)),
+                    Title = xElement.GetStringValue(nameof(Employee.Title)),
+                    TitleOfCourtesy = xElement.GetStringValue(nameof(Employee.TitleOfCourtesy)),
+                    BirthDate = xElement.GetDateTimeValue(nameof(Employee.BirthDate)),
+                    HireDate = (DateTime) dateTimeValue,
+                    Address = new Address
                     {
-                        //Id = int.Parse(e.Element("Id").Value),
-                        LastName = xElement.GetStringValue(nameof(Employee.LastName)),
-                        FirstName = xElement.GetStringValue(nameof(Employee.FirstName)),
-                        Title = xElement.GetStringValue(nameof(Employee.Title)),
-                        TitleOfCourtesy = xElement.GetStringValue(nameof(Employee.TitleOfCourtesy)),
-                        BirthDate = xElement.GetDateTimeValue(nameof(Employee.BirthDate)),
-                        HireDate = (DateTime)dateTimeValue,
-                        Address = new Address
-                        {
-                            AddressLine = xElement.GetStringValue(nameof(Employee.Address)),
-                            City = xElement.GetStringValue(nameof(Address.City)),
-                            Region = xElement.GetStringValue(nameof(Address.Region)),
-                            PostalCode = xElement.GetStringValue(nameof(Address.PostalCode)),
-                            Country = xElement.GetStringValue(nameof(Address.Country))
-                        },
-                        Phone = xElement.GetStringValue(nameof(Employee.Phone)),
-                        Extension = xElement.GetStringValue(nameof(Employee.Extension)),
-                        Photo = xElement.GetByteArrayValue(nameof(Employee.Photo)),
-                        Notes = xElement.GetStringValue(nameof(Employee.Notes)),
-                        ReportsTo = xElement.GetIntValue(nameof(Employee.ReportsTo))
-                    }).ToList();
+                        AddressLine = xElement.GetStringValue(nameof(Employee.Address)),
+                        City = xElement.GetStringValue(nameof(Address.City)),
+                        Region = xElement.GetStringValue(nameof(Address.Region)),
+                        PostalCode = xElement.GetStringValue(nameof(Address.PostalCode)),
+                        Country = xElement.GetStringValue(nameof(Address.Country))
+                    },
+                    Phone = xElement.GetStringValue(nameof(Employee.Phone)),
+                    Extension = xElement.GetStringValue(nameof(Employee.Extension)),
+                    Photo = xElement.GetByteArrayValue(nameof(Employee.Photo)),
+                    Notes = xElement.GetStringValue(nameof(Employee.Notes)),
+                    ReportsTo = xElement.GetIntValue(nameof(Employee.ReportsTo))
+                }).ToList();
         }
     }
 }
-

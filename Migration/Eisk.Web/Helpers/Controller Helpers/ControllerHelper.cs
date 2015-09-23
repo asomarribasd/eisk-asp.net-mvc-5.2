@@ -7,9 +7,9 @@ namespace Eisk.Helpers
     public class ControllerHelper
     {
         private readonly ControllerContext _controllerContext;
-        private ViewContext _viewContext;
-        private UrlHelper _url;
         private HtmlHelper _html;
+        private UrlHelper _url;
+        private ViewContext _viewContext;
 
         public ControllerHelper(Controller controller)
         {
@@ -31,7 +31,8 @@ namespace Eisk.Helpers
         public UrlHelper Url => _url ?? (_url = new UrlHelper(_controllerContext.RequestContext));
 
         public HtmlHelper Html => _html ??
-                                  (_html = new HtmlHelper(ViewContext, new InternalViewDataContainer(ViewContext.ViewData)));
+                                  (_html =
+                                      new HtmlHelper(ViewContext, new InternalViewDataContainer(ViewContext.ViewData)));
 
         private class InternalView : IView
         {

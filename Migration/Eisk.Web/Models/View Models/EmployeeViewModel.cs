@@ -6,22 +6,21 @@ namespace Eisk.Models
 {
     public class EmployeeViewModel
     {
-        readonly Employee _employee;
-        readonly ControllerHelper _controllerHelper;
+        private readonly ControllerHelper _controllerHelper;
+        private readonly Employee _employee;
 
         public EmployeeViewModel(Employee employee, Controller controller)
         {
             _employee = employee;
             _controllerHelper = new ControllerHelper(controller);
-
         }
 
         public int EmployeeId => _employee.Id;
 
-        public string FullName => StringHelper.ConnectStrings(" ", _employee.TitleOfCourtesy, _employee.FirstName, _employee.LastName);
+        public string FullName
+            => StringHelper.ConnectStrings(" ", _employee.TitleOfCourtesy, _employee.FirstName, _employee.LastName);
 
         public string Title => _employee.Title;
-
         public string HireDate => $"{_employee.HireDate:M/dd/yyyy}";
 
         public string BirthDate
@@ -38,8 +37,7 @@ namespace Eisk.Models
             _employee.Address.City, _employee.Address.Region, _employee.Address.PostalCode, _employee.Address.Country);
 
         public string PhoneWithExtension => StringHelper.ConnectStrings(" - ", _employee.Phone, _employee.Extension);
-
-        public string EmployeeImageSource => _controllerHelper.Url.Action("EmployeeImageFile", new { id = _employee.Id });
+        public string EmployeeImageSource => _controllerHelper.Url.Action("EmployeeImageFile", new {id = _employee.Id});
 
         public IHtmlString SupervisorFullName
         {
@@ -47,16 +45,20 @@ namespace Eisk.Models
             {
                 if (_employee.Supervisor != null)
                 {
-                    string supervisorDetailsUrl = _controllerHelper.Url.Action("Details", new { id = _employee.Supervisor.Id });
-                    return MvcHtmlString.Create(HtmlConverter.LinkWrapper(StringHelper.ConnectStrings(" ", _employee.Supervisor.TitleOfCourtesy,
-                        _employee.Supervisor.FirstName, _employee.Supervisor.LastName), 
-                        supervisorDetailsUrl));
+                    var supervisorDetailsUrl = _controllerHelper.Url.Action("Details",
+                        new {id = _employee.Supervisor.Id});
+                    return
+                        MvcHtmlString.Create(
+                            HtmlConverter.LinkWrapper(
+                                StringHelper.ConnectStrings(" ", _employee.Supervisor.TitleOfCourtesy,
+                                    _employee.Supervisor.FirstName, _employee.Supervisor.LastName),
+                                supervisorDetailsUrl));
                 }
 
                 return MvcHtmlString.Create("Damn lucky guy!");
             }
         }
-    
+
         public IHtmlString ShortNotes
         {
             get

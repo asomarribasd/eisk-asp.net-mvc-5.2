@@ -1,5 +1,5 @@
-$(document).ready(function () {
-    $(".close").click(function () {
-        $("#myAlert").alert('close');
+$(document).ready(function() {
+    $(".close").click(function() {
+        $("#myAlert").alert("close");
     });
 });

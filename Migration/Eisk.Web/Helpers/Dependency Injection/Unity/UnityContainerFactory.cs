@@ -13,6 +13,8 @@
 // organization, product, domain name, email address, logo, person,
 // places, or events is intended or should be inferred.
 //===================================================================================
+
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 
@@ -20,7 +22,7 @@ namespace Eisk.Helpers
 {
     public class UnityContainerFactory
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability",
+        [SuppressMessage("Microsoft.Reliability",
             "CA2000:Dispose objects before losing scope", Justification = "Container has the scope of the application.")
         ]
         public IUnityContainer CreateConfiguredContainer()

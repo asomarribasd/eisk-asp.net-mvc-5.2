@@ -1,11 +1,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+
 namespace Eisk.Helpers
 {
     public sealed class DateGreaterThanAttribute : ValidationAttribute
     {
         private const string _defaultErrorMessage = "'{0}' must be greater than '{1}'";
-        private string _basePropertyName;
+        private readonly string _basePropertyName;
 
         public DateGreaterThanAttribute(string basePropertyName)
             : base(_defaultErrorMessage)
@@ -30,18 +31,17 @@ namespace Eisk.Helpers
             var startDate = basePropertyInfo.GetValue(validationContext.ObjectInstance, null);
             if (startDate == null) return null;
 
-            var thisDate = (DateTime)value;
+            var thisDate = (DateTime) value;
 
             //Actual comparision  
             if (thisDate <= DateTime.Parse(startDate.ToString()))
             {
                 var message = FormatErrorMessage(validationContext.DisplayName);
-                return new ValidationResult(message, new[] { validationContext.MemberName });
+                return new ValidationResult(message, new[] {validationContext.MemberName});
             }
 
             //Default return - This means there were no validation error  
             return ValidationResult.Success;
         }
-
     }
 }

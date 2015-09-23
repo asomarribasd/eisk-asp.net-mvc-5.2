@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
-using System;
 
 namespace Eisk.Helpers
 {
@@ -15,16 +14,16 @@ namespace Eisk.Helpers
             {
                 if (_container == null)
                     Initialize();
-                return DependencyHelper._container;
+                return _container;
             }
         }
-        
+
         /// <summary>
-        /// Initializes the dependency injection container according to config settings.
-       /// </summary>
+        ///     Initializes the dependency injection container according to config settings.
+        /// </summary>
         public static void Initialize()
         {
-            _container = new UnityContainerFactory().CreateConfiguredContainer();     
+            _container = new UnityContainerFactory().CreateConfiguredContainer();
             var serviceLocator = new UnityServiceLocator(_container);
             ServiceLocator.SetLocatorProvider(() => serviceLocator);
             DependencyResolver.SetResolver(new UnityDependencyResolver(_container));

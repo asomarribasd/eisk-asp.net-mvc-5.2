@@ -12,6 +12,7 @@ Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
 Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
    
 *******************************************************/
+
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Eisk.DataAccess;
@@ -22,31 +23,28 @@ namespace Eisk.BusinessRules
 {
     public class SupervisorCountryMustBeSame
     {
+        private const string ERROR_MESSAGE = "Supervisor country must be same as subordinate.";
+
         public static ValidationResult Validate(Employee employee)
         {
             if (employee.ReportsTo != null)
             {
                 if (employee.Supervisor == null)
-                    employee.Supervisor = 
+                    employee.Supervisor =
                         DependencyHelper.GetInstance<DatabaseContext>().
-                        EmployeeRepository.
-                        Find((int)employee.ReportsTo);
+                            EmployeeRepository.
+                            Find((int) employee.ReportsTo);
 
                 if (employee.Address.Country != employee.Supervisor.Address.Country)
-                    return new ValidationResult(ERROR_MESSAGE, new[] { string.Empty, "Address.Country" });
-
+                    return new ValidationResult(ERROR_MESSAGE, new[] {string.Empty, "Address.Country"});
             }
 
             return ValidationResult.Success;
         }
 
-        const string ERROR_MESSAGE = "Supervisor country must be same as subordinate.";
-
         public static bool IsErrorAvalilableIn(Controller controller)
         {
             return controller.IsErrorAvalilableIn(ERROR_MESSAGE);
         }
-
     }
 }
-

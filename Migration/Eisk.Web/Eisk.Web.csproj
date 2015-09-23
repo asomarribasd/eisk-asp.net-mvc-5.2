@@ -156,7 +156,10 @@
   <ItemGroup>
     <Compile Include="Data Access\DatabaseContext.cs" />
     <Compile Include="Data Access\UserDataAccess.cs" />
+    <Compile Include="Helpers\Enums\EditMode.cs" />
+    <Compile Include="Helpers\Enums\UserRole.cs" />
     <Compile Include="Helpers\Filters\CustomExceptionFilter.cs" />
+    <Compile Include="Helpers\Enums\MessageType.cs" />
     <Compile Include="Models\Entities\UserInfo.cs" />
     <Compile Include="Initializers\Context\Data Loader\TestDataHelper.cs" />
     <Compile Include="Initializers\Config\BundleConfig.cs" />
@@ -187,7 +190,6 @@
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Helpers\CountryList.cs" />
     <Compile Include="Initializers\Context\Data Loader\DatabaseContextInitializer.cs" />
-    <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Validation\DateGreaterThanAttribute.cs" />
     <Compile Include="Helpers\Validation\RequiredIfAttribute.cs" />
     <Compile Include="Helpers\XElementExtensions.cs" />

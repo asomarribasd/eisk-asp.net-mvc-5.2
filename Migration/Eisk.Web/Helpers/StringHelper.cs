@@ -6,14 +6,14 @@ namespace Eisk.Helpers
     {
         public static string ConnectStrings(string connector, params string[] items)
         {
-            StringBuilder output = new StringBuilder();
-            
-            for (int i = 0;i< items.Length; i++)
+            var output = new StringBuilder();
+
+            for (var i = 0; i < items.Length; i++)
             {
                 if (items[i] != null)
                 {
                     output.Append(items[i]);
-            
+
                     //if the current item is not the last item
                     if (i < items.Length - 1)
                         output.Append(connector);
@@ -25,6 +25,5 @@ namespace Eisk.Helpers
 
             return output.ToString();
         }
-
     }
 }

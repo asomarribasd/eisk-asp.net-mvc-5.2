@@ -20,7 +20,7 @@ namespace Eisk.Helpers
             {
                 if (validationResult.MemberNames.Any())
                 {
-                    foreach (string memberName in validationResult.MemberNames)
+                    foreach (var memberName in validationResult.MemberNames)
                         controller.ModelState.AddModelError(memberName, validationResult.ErrorMessage);
                 }
                 else
@@ -32,7 +32,8 @@ namespace Eisk.Helpers
 
         //messsage extensions
 
-        public static void ShowMessage(this Controller controller, string message, MessageType messageType = MessageType.Info, bool showAfterRedirect = true)
+        public static void ShowMessage(this Controller controller, string message,
+            MessageType messageType = MessageType.Info, bool showAfterRedirect = true)
         {
             var messageTypeKey = messageType.ToString();
             if (showAfterRedirect)
@@ -47,7 +48,7 @@ namespace Eisk.Helpers
 
         public static void ShowModelStateErrors(this Controller controller, bool showAfterRedirect = false)
         {
-            foreach (ModelError error in controller.GetModelErrors())
+            foreach (var error in controller.GetModelErrors())
             {
                 controller.ShowMessage(error.ErrorMessage, MessageType.Danger, showAfterRedirect);
             }
@@ -57,11 +58,11 @@ namespace Eisk.Helpers
 
         public static ModelErrorCollection GetModelErrors(this Controller controller)
         {
-            ModelErrorCollection errors = new ModelErrorCollection();
+            var errors = new ModelErrorCollection();
 
-            foreach (ModelState modelState in controller.ViewData.ModelState.Values)
+            foreach (var modelState in controller.ViewData.ModelState.Values)
             {
-                foreach (ModelError error in modelState.Errors)
+                foreach (var error in modelState.Errors)
                 {
                     errors.Add(error);
                 }
@@ -75,7 +76,7 @@ namespace Eisk.Helpers
             return IsErrorAvalilableIn(controller.GetModelErrors(), errorMessage);
         }
 
-        static bool IsErrorAvalilableIn(ModelErrorCollection errors, string errorMessage)
+        private static bool IsErrorAvalilableIn(ModelErrorCollection errors, string errorMessage)
         {
             return errors.Any(error => error.ErrorMessage == errorMessage);
         }

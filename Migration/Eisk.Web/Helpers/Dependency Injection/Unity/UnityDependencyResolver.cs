@@ -13,6 +13,7 @@
 // organization, product, domain name, email address, logo, person,
 // places, or events is intended or should be inferred.
 //===================================================================================
+
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -33,7 +34,7 @@ namespace Eisk.Helpers
         {
             try
             {
-                return this.unity.Resolve(serviceType);
+                return unity.Resolve(serviceType);
             }
             catch (ResolutionFailedException)
             {
@@ -46,7 +47,7 @@ namespace Eisk.Helpers
         {
             try
             {
-                return this.unity.ResolveAll(serviceType);
+                return unity.ResolveAll(serviceType);
             }
             catch (ResolutionFailedException)
             {
