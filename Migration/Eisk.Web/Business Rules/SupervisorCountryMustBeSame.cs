@@ -1,19 +1,4 @@
-﻿/****************** Copyright Notice *****************
- 
-This code is licensed under Microsoft Public License (Ms-PL). 
-You are free to use, modify and distribute any portion of this code. 
-The only requirement to do that, you need to keep the developer name, as provided below to recognize and encourage original work:
-
-=======================================================
-   
-Architecture Designed and Implemented By:
-Mohammad Ashraful Alam
-Microsoft Most Valuable Professional, ASP.NET 2007 – 2013
-Twitter: http://twitter.com/AshrafulAlam | Blog: http://weblogs.asp.net/ashraful | Github: https://github.com/ashrafalam
-   
-*******************************************************/
-
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Eisk.DataAccess;
 using Eisk.Helpers;
@@ -36,7 +21,7 @@ namespace Eisk.BusinessRules
                             Find((int) employee.ReportsTo);
 
                 if (employee.Address.Country != employee.Supervisor.Address.Country)
-                    return new ValidationResult(ERROR_MESSAGE, new[] {string.Empty, "Address.Country"});
+                    return new ValidationResult(ERROR_MESSAGE, new[] {string.Empty, nameof(Address.Country)});
             }
 
             return ValidationResult.Success;
