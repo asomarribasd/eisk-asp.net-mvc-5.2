@@ -13,7 +13,7 @@ namespace Eisk.Models
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Required")]
-        [DateGreaterThanAttribute("BirthDate")]
+        [DateGreaterThan("BirthDate")]
         [Display(Name = "Hire Date")]
         public DateTime HireDate { get; set; }
 
