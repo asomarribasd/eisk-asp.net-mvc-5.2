@@ -1,4 +1,43 @@
-﻿===================================================
+﻿=======================================================================================
+
+* unit test architecture
+* bootstrap:
+	* bootstrap: UI => listing
+	* bootstrap: UI => edit
+	* bootstrap: UI => details
+	* bootstrap: UI => security samples
+* asp.net logging middlewire
+* asp.net caching middlewire
+* responseCaching middlewire
+* AOP for domain validation in service lavel
+* nLog implementation
+
+* fix menu 
+* do we need the nuget exe for nuget restore?
+* should we include a service layer?
+* tests
+	* understand difference between mock/stub
+	* include record/replay tests 
+
+* cloud implementation
+* java-script implementation
+* mobile view
+* identity implementation + OWIN Katana
+* scafold template
+
+* fix ajax leader for admin user list
+* make sure MVC and API unified controller is being used
+
+DONE * Custom error
+DONE * auto mapper integration
+DONE * isolate integration project
+DONE * default dependency injection
+DONE * upgrade mvc, ef, unity, moq
+DONE * xUnit integration
+DONE * bundle 
+===================================================
+* Deleted Selected Broken
+* Logging using NLOG
 
 * Bootstrap UI Theme Implementation
 	IN PROGRESS * Listing page
@@ -8,16 +47,12 @@
 * Image upload broken
 * Paging Support @ Listing
 * Sorting Support @ Listing
-* Message Alert Close not working
-* Implement Bundle
-* ASP.NET Identity Implementation
 * Site Breadcrumb
 * Attribute routing
 * Usage of automapper for view model mapping code
 * Usage of Entity Framework Enumeration
 * Test improvements
 * Horizontal Menu
-DONE * Deleted Selected Broken
 
 * Mobile (Listing + Details)
 * Socket/Notification (SignalIR)
@@ -33,6 +68,11 @@ DONE * Deleted Selected Broken
 * attribute based domain data (name, address) setup for test
 * attribute based domain data (name, address) validation
 * search functionality
+
+
+DONE * Message Alert Close not working
+DONE * Implement Bundle
+DONE * ASP.NET Identity Implementation
 
 ===================================================
 Check References
