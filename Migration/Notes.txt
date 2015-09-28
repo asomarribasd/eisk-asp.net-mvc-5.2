@@ -37,9 +37,14 @@ Framework Test
 
 =========================
 Test Level
-P1 * Functionality Tests
-P2 * Structure Test
-P3 * Framework Test
+L1	* Functionality Test
+L2	* Structure Test
+	* Useful when we want a target system should use only a specific api regardless of functinalities remaining same
+	* Useful when we want to early catch a bug that can cause functional bug before deploying
+L3	* Framework Test
+	* Tests a single class or utility in details that is being used by several callers.
+	* For external api, it can be used to understand api behaviour
+	* Example: generic repository
 
 Test Objects
 * Fake 
