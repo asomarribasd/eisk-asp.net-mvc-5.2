@@ -1,27 +1,22 @@
-﻿<style type="text/css">
-    .bs-example {
-        margin: 20px 30px;
-    }
-</style>
+﻿@using System.Web.Optimization
 
-@using System.Web.Optimization
 @model Eisk.Models.EmployeeEditorModel
 @{
     ViewBag.Title = Model.PageTitle;
 }
 
 @using (Html.BeginForm(Model.EditorAction, "Employees", FormMethod.Post,
-                                                                                                                                                                new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                                                                                                                                                                            new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     @Html.ValidationSummary(true)
     <h1 class="h1">
         @Model.PageTitle
     </h1>
-    <p class="bs-example">
+    <p class="editor-panel">
         Add details of the employee. Required fields are marked with *.
     </p>
     @Html.HiddenFor(model => model.Id)
-    <div class="bs-example">
+    <div class="editor-panel">
         <div class="row form-group">
             <div class="col-xs-4">
                 @Html.EditorFor(m => m.FirstName)
@@ -97,25 +92,102 @@
 }
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jquery-val");
     @Scripts.Render("~/bundles/jquery-ui");
+    @Scripts.Render("~/bundles/eisk-editor");
+    <script language='javascript'>
+        /* Upload Image related functions. */
+        function uploadFile(url) {
+            var fd = new FormData();
+            fd.append("imageUpload", document.getElementById('imageUpload').files[0]);
+            var xhr = new XMLHttpRequest();
+            xhr.upload.addEventListener("progress", uploadProgress, false);
+            xhr.addEventListener("load", uploadComplete, false);
+            xhr.addEventListener("error", uploadFailed, false);
+            xhr.addEventListener("abort", uploadCanceled, false);
+            xhr.open("POST", "@Url.Action("AjaxImageUpload")");
+            xhr.responseType = 'blob';
+            xhr.send(fd);
+            $('#divUploadStatus').show();
+        }
 
-    <script type="text/javascript">
-        $(function () {
-            $(".datepicker").datepicker({
-                changeMonth: true,
-                changeYear: true,
-                showOn: "focus",
-                showAnim: 'slideDown'
-            });
+        function uploadProgress(evt) {
+            if (evt.lengthComputable) {
+                var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+                ShowProgress(percentComplete, 100);
+            } else {
+                document.getElementById('progressNumber').innerHTML = 'unable to compute';
+            }
+        }
+
+        function ShowProgress(currentValue, maxValue) {
+            document.getElementById('progressNumber').innerHTML = currentValue.toString() + '% uploaded.';
+            var progressBar = document.getElementById("progressBar");
+            progressBar.max = maxValue;
+            progressBar.value = currentValue;
+        }
+
+        function uploadComplete(evt) {
+            /* This event is raised when the server send back a response */
+            if (this.status == 200) {
+                ShowProgress(100, 100);
+                document.getElementById('imageUpload').value = '';
+                //loading the respose bytes to image tag
+                var blob = this.response;
+                var img = document.getElementById('employeeImage');
+                img.onload = function(e) {
+                    window.URL.revokeObjectURL(img.src); // Clean up after yourself.
+                };
+                img.src = window.URL.createObjectURL(blob);
+                $('#divUploadPanel').hide();
+                $('#btnCancelUpload').show();
+                //document.body.appendChild(img);
+            }
+        }
+
+        function uploadFailed(evt) {
+            alert("There was an error attempting to upload the file.");
+        }
+
+        function uploadCanceled(evt) {
+            alert("The upload has been canceled by the user or the browser dropped the connection.");
+        }
+
+//==============================================================
+
+/* Discard Uploaded Image related functions. */
+
+        $("#btnCancelUpload").on("click", "body", function(e) {
+            // Don't post back
+            //e.preventDefault();
+            $('#divUploadPanel').show();
+            $('#btnCancelUpload').hide();
+            $('#divUploadStatus').hide();
+            ReLoadEmployeeDbImage();
         });
-    </script>
-    <script type="text/javascript">
 
-        $("#anim").change(function () {
-            $("#datepicker").datepicker("option", "showAnim", $(this).val());
-        });
+        function ReLoadEmployeeDbImage() {
+            var xhr = new XMLHttpRequest();
+            xhr.addEventListener("load", DownloadEmployeeDbImageComplete, false);
+            xhr.open("GET", "@Url.Action("DiscardUploadededImage", new {id = Model.Id})");
+            xhr.responseType = 'blob';
+            xhr.send();
 
+            $('#ajax-loader').show();
+        }
+
+        function DownloadEmployeeDbImageComplete(evt) {
+            if (this.status == 200) {
+                var blob = this.response;
+                var img = document.getElementById('employeeImage');
+                img.onload = function(e) {
+                    window.URL.revokeObjectURL(img.src); // Clean up after yourself.
+                };
+                img.src = window.URL.createObjectURL(blob);
+
+            }
+
+            $('#ajax-loader').hide();
+        }
     </script>
 }
 

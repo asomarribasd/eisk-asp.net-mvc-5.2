@@ -9,9 +9,6 @@ namespace Eisk
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery-val").Include(
-                "~/Scripts/jquery.validate*"));
-
             bundles.Add(new ScriptBundle("~/bundles/jquery-ui").Include(
                 "~/Scripts/jquery-ui.js"));
 
@@ -21,6 +18,11 @@ namespace Eisk
 
             bundles.Add(new ScriptBundle("~/bundles/eisk").Include(
                 "~/Scripts/eisk.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/eisk-editor").Include(
+                "~/Scripts/jquery.validate*",
+                "~/Scripts/eisk-calender.js",
+                "~/Scripts/eisk-required-if-validation.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/site.css",
