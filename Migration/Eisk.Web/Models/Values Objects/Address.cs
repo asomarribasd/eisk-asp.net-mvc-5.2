@@ -14,8 +14,7 @@ namespace Eisk.Models
         public string City { get; set; }
 
         [StringLength(15)]
-        [RequiredIf("Country", "Canada, India, USA", ErrorMessage = "You must specify Region for the selected country.")
-        ]
+        [RequiredIf(nameof(Country), "Canada, India, USA", ErrorMessage = "You must specify Region for the selected country.")]
         public string Region { get; set; }
 
         [StringLength(10)]

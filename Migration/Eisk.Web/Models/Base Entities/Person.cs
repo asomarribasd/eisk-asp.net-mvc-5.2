@@ -19,7 +19,6 @@ namespace Eisk.Models
         [Required(ErrorMessage = "First name required.")]
         [StringLength(10)]
         [Display(Name = "First Name")]
-        //[UIHint("First Name")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Last name required.")]
