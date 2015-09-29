@@ -140,13 +140,13 @@ namespace Eisk.Controllers
         {
             if (image == null)
             {
-                var img = Image.FromFile(Server.MapPath("~/Images/noimage.gif"));
+                var img = Image.FromFile(Server.MapPath("~/Images/noimage.png"));
                 var ms = new MemoryStream();
                 img.Save(ms, ImageFormat.Gif);
                 image = ms.ToArray();
             }
 
-            return File(image, "image/gif");
+            return File(image, "image/png");
         }
 
         public FileContentResult EmployeeImageFile(int id)

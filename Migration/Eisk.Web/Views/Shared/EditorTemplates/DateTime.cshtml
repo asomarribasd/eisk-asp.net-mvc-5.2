@@ -1,7 +1,11 @@
 ﻿@model DateTime
 
+@{
+    var value = Model == DateTime.MinValue ? string.Empty : string.Format("{0:M/dd/yyyy}", Model); 
+}
+
 @Html.Label("")
 @Html.RequiredSymbol()
-@Html.TextBox("", (Model), new { @class = "form-control datepicker" })
+@Html.TextBox("", (value), new { @class = "form-control datepicker" })
 @Html.ValidationMessage("")
 
