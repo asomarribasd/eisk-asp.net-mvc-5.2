@@ -83,6 +83,18 @@ public static class HtmlHelperExtensions
         return MvcHtmlString.Create(string.Empty);
     }
 
+    public static IHtmlString RequiredSymbol(this HtmlHelper htmlHelper, string symbol = "* ")
+    {
+        ModelMetadata modelMetadata = ModelMetadata.FromStringExpression("", htmlHelper.ViewData);
+
+        if (modelMetadata.IsRequired)
+        {
+            return MvcHtmlString.Create(symbol);
+        }
+
+        return MvcHtmlString.Create(string.Empty);
+    }
+
     #endregion
 
     #region Panel Controls 
