@@ -7,7 +7,7 @@
 
 @using (Html.BeginForm(Model.EditorAction, "Employees", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary(true, "",new { @class = "alert alert-danger" })
     <h1 class="h1">
         @Model.PageTitle
     </h1>
