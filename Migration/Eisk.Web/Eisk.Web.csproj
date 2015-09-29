@@ -322,6 +322,7 @@
     <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_TextEditorFor.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

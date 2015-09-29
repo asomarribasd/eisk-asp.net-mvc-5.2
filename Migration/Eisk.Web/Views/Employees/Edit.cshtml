@@ -45,7 +45,7 @@
         <div class="row form-group">
             <div class="col-xs-4">
                 @Html.LabelFor(m => m.FirstName)
-                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                @Html.EditorFor(m => m.FirstName)
                 @Html.ValidationMessageFor(m => m.FirstName)
             </div>
             <div class="col-xs-4">
