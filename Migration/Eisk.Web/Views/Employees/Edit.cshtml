@@ -1,9 +1,7 @@
-﻿<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/eisk-required-if-validation.js")" type="text/javascript"></script>
+﻿@*<script src="@Url.Content("~/Scripts/eisk-required-if-validation.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery-ui-1.8.18.custom.min.js")" type="text/javascript"></script>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $(".datepicker").datepicker({
             changeMonth: true,
             changeYear: true,
@@ -14,26 +12,30 @@
 </script>
 <script type="text/javascript">
 
-    $("#anim").change(function() {
+    $("#anim").change(function () {
         $("#datepicker").datepicker("option", "showAnim", $(this).val());
     });
 
-</script>
+</script>*@
 <style type="text/css">
-    .bs-example { margin: 20px; }
+    .bs-example {
+        margin: 20px 60px;
+    }
 </style>
 
+@using System.Web.Optimization
 @model Eisk.Models.EmployeeEditorModel
 @{
     ViewBag.Title = Model.PageTitle;
 }
 
 @using (Html.BeginForm(Model.EditorAction, "Employees", FormMethod.Post,
-    new {enctype = "multipart/form-data", @class = "form-horizontal"}))
+                            new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     @Html.ValidationSummary(true)
     <h1 class="h1">
-        @Model.PageTitle
+        @*@Model.PageTitle*@
+        Test
     </h1>
     <p class="bs-example">
         Add details of the employee.
@@ -49,138 +51,28 @@
             </div>
             <div class="col-xs-4">
                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
                     <input type="text" class="form-control" placeholder="Last Name">
                 </div>
             </div>
         </div>
         <br>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="Title">
-                </div>
+                @Html.LabelFor(m => m.FirstName)
+                @Html.EditorFor(m => m.FirstName)
+                @Html.ValidationMessageFor(m => m.FirstName)
             </div>
             <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="Title of Courtesy">
-                </div>
+                <input type="text" class="form-control" placeholder="Title of Courtesy">
             </div>
         </div>
         <br>
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <select class="form-control" placeholder="Supervisor">
-                        <option>Supervisor 1</option>
-                        <option>Supervisor 2</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="Hire Date">
-                </div>
-            </div>
-
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="Birth Date">
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="Address">
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="City">
-                </div>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="Region">
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="Postal Code">
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <select class="form-control" placeholder="Country">
-                        <option>Bangladesh</option>
-                        <option>Singapore</option>
-                        <option>USA</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="Phone">
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="Extension">
-                </div>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <textarea type="text" class="form-control input-lg" placeholder="Notes"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="input-group">
-                    Picture:<br/>
-                    <img id="employeeImage" alt="employee image" class="profile-image" src="/Images/noimage.gif"/>
-                    <br/><br/>
-                    <input type="file" class="form-control" placeholder="Picture">
-                </div>
-            </div>
-        </div>
-        <br/>
         <div class="row">
             <div class="col-xs-4">
                 <div class="input-group">
                     <input type="submit" class="btn btn-primary" value="Submit">
                     @*<input type="reset" class="btn btn-default" value="Reset">*@
-                    <br/>
+                    <br />
                     <div>
                         <em>Required fields are marked with *</em>
                     </div>
@@ -188,4 +80,8 @@
             </div>
         </div>
     </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

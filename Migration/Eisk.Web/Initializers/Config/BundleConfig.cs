@@ -23,7 +23,8 @@ namespace Eisk
                 "~/Content/site.css",
                 "~/Content/eisk.css",
                 "~/Content/themes/default/bootstrap/bootstrap.css",
-                "~/Content/themes/default/bootstrap/bootstrap-theme-3.3.4.min.css"));
+                "~/Content/themes/default/bootstrap/bootstrap-theme-3.3.4.min.css",
+                "~/Content/themes/default/mvc-default.css"));
 
             BundleTable.EnableOptimizations = false;
         }

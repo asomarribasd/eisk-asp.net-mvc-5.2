@@ -236,6 +236,7 @@
     <Content Include="Content\themes\default\jquery-ui\jquery-ui-1.8.18.custom.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\default\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\themes\default\mvc-default.css" />
     <Content Include="Images\ico-refresh.png" />
     <Content Include="Images\ico-arrow-back.png" />
     <Content Include="Global.asax" />
