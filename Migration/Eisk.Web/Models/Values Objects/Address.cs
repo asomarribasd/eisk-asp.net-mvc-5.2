@@ -25,6 +25,7 @@ namespace Eisk.Models
 
         [Required(ErrorMessage = "Country required.")]
         [StringLength(15)]
+        [UIHint("CountryDropDown")]
         public string Country { get; set; }
     }
 }

@@ -5,8 +5,7 @@
     ViewBag.Title = Model.PageTitle;
 }
 
-@using (Html.BeginForm(Model.EditorAction, "Employees", FormMethod.Post,
-                                                                                                                                                                            new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+@using (Html.BeginForm(Model.EditorAction, "Employees", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     @Html.ValidationSummary(true)
     <h1 class="h1">

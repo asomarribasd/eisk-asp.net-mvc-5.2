@@ -18,6 +18,7 @@ namespace Eisk.Models
         public DateTime HireDate { get; set; }
 
         [Display(Name = "Supervisor")]
+        [UIHint("ReportsToDropDown")]
         public int? ReportsTo { get; set; }
 
         [ForeignKey("ReportsTo")]

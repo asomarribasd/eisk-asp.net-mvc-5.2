@@ -1,0 +1,12 @@
+﻿@using Eisk.Helpers
+@model string
+
+@{
+    var selectList = new SelectList(CountryList.Countries, Model);
+}
+
+@Html.Label("")
+@Html.RequiredSymbol()
+@Html.DropDownList("", selectList, "Choose a country", new { @class = "form-control"})
+@Html.ValidationMessage("")
+

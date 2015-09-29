@@ -268,6 +268,7 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\respond.js" />
+    <Content Include="Views\Shared\EditorTemplates\CountryDropDown.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -332,7 +333,7 @@
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TextArea.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ReportsToDropDown.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

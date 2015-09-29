@@ -19,8 +19,6 @@ namespace Eisk.Models
             Mapper.Map(employee, this);
         }
 
-        public IEnumerable<SelectListItem> SupervisorSelectList => LookUpModelSet.SupervisorSelectList;
-        public SelectList CountrySelectList => LookUpModelSet.CountrySelectList;
         public string PageTitle { get; private set; }
         public string EditorAction => Id == 0 ? "Create" : "Edit";
     }
