@@ -219,23 +219,26 @@
     <Content Include="Content\themes\default\bootstrap\bootstrap-theme.3.3.4.min.css" />
     <Content Include="Content\themes\default\bootstrap\bootstrap.css" />
     <Content Include="Content\eisk.css" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_flat_0_eeeeee_40x100.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_flat_55_c0402a_40x100.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_flat_55_eeeeee_40x100.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_glass_100_f8f8f8_1x400.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_glass_35_dddddd_1x400.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_glass_60_eeeeee_1x400.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_inset-hard_75_999999_1x100.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_inset-soft_50_c9c9c9_1x100.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_3383bb_256x240.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_70b2e1_256x240.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_999999_256x240.png" />
-    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_fbc856_256x240.png" />
-    <Content Include="Content\themes\default\jquery-ui\jquery-ui-1.8.18.custom.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\default\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\themes\default\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_diagonals-thick_8_333333_40x40.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_flat_65_ffffff_40x100.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_glass_40_111111_1x400.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_glass_55_1c1c1c_1x400.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_highlight-hard_100_f9f9f9_1x100.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_highlight-hard_40_aaaaaa_1x100.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_highlight-soft_50_aaaaaa_1x100.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_inset-hard_45_cd0a0a_1x100.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-bg_inset-hard_55_ffeb80_1x100.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_4ca300_256x240.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_bbbbbb_256x240.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_ededed_256x240.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_ffcf29_256x240.png" />
+    <Content Include="Content\themes\default\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\default\jquery-ui\jquery-ui.css" />
+    <Content Include="Content\themes\default\jquery-ui\jquery.ui.theme.css" />
     <Content Include="Content\themes\default\mvc-default.css" />
     <Content Include="Images\ico-refresh.png" />
     <Content Include="Images\ico-arrow-back.png" />
@@ -257,7 +260,7 @@
     <Content Include="Scripts\eisk-menu.js" />
     <Content Include="Scripts\eisk-required-if-validation.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-ui-1.8.18.custom.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.mobile-1.0.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -326,6 +329,7 @@
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TextArea.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DropDown.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

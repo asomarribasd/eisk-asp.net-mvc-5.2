@@ -9,8 +9,11 @@ namespace Eisk
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+            bundles.Add(new ScriptBundle("~/bundles/jquery-val").Include(
                 "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery-ui").Include(
+                "~/Scripts/jquery-ui.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js",
@@ -25,6 +28,10 @@ namespace Eisk
                 "~/Content/themes/default/bootstrap/bootstrap.css",
                 "~/Content/themes/default/bootstrap/bootstrap-theme-3.3.4.min.css",
                 "~/Content/themes/default/mvc-default.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/jquery-ui").Include(
+                "~/Content/themes/default/jquery-ui/theme.css",
+                "~/Content/themes/default/jquery-ui/jquery-ui.css"));
 
             BundleTable.EnableOptimizations = false;
         }
