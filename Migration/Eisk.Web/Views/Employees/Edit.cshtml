@@ -7,7 +7,7 @@
 
 @using (Html.BeginForm(Model.EditorAction, "Employees", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
-    @Html.ValidationSummary(true, "",new { @class = "alert alert-danger" })
+    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
     <h1 class="h1">
         @Model.PageTitle
     </h1>
@@ -17,77 +17,43 @@
     @Html.HiddenFor(model => model.Id)
     <div class="editor-panel">
         <div class="row form-group">
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.FirstName)
-            </div>
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.LastName)
-            </div>
+            @Html.EditorFor(m => m.FirstName)
+            @Html.EditorFor(m => m.LastName)
         </div>
         <div class="row form-group">
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.TitleOfCourtesy)
-            </div>
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.BirthDate)
-            </div>
+            @Html.EditorFor(m => m.TitleOfCourtesy)
+            @Html.EditorFor(m => m.BirthDate)
         </div>
         <div class="row form-group">
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.Title)
-            </div>
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.HireDate)
-            </div>
+            @Html.EditorFor(m => m.Title)
+            @Html.EditorFor(m => m.HireDate)
         </div>
         <div class="row form-group">
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.ReportsTo)
-            </div>
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.Address.Country)
-            </div>
+            @Html.EditorFor(m => m.ReportsTo)
+            @Html.EditorFor(m => m.Address.Country)
         </div>
         <div class="row form-group">
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.Address.AddressLine)
-            </div>
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.Address.City)
-            </div>
+            @Html.EditorFor(m => m.Address.AddressLine)
+            @Html.EditorFor(m => m.Address.City)
         </div>
         <div class="row form-group">
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.Address.Region)
-            </div>
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.Address.PostalCode)
-            </div>
+            @Html.EditorFor(m => m.Address.Region)
+            @Html.EditorFor(m => m.Address.PostalCode)
         </div>
         <div class="row form-group">
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.Phone)
-            </div>
-            <div class="col-xs-4">
-                @Html.EditorFor(m => m.Extension)
-            </div>
+            @Html.EditorFor(m => m.Phone)
+            @Html.EditorFor(m => m.Extension)
         </div>
         <div class="row form-group">
             <div class="col-xs-4">
                 @Html.EditorFor(m => m.Notes)
+                <br />
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <br />
+                <span>Required fields are marked with *</span>
             </div>
             <div class="col-xs-4">
                 @Html.Partial("_EditorImagePanel", Model)
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-xs-4">
-                <input type="submit" class="btn btn-primary" value="Submit">
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-xs-4">
-                <span>Required fields are marked with *</span>
             </div>
         </div>
     </div>
@@ -136,7 +102,7 @@
                 //loading the respose bytes to image tag
                 var blob = this.response;
                 var img = document.getElementById('employeeImage');
-                img.onload = function(e) {
+                img.onload = function (e) {
                     window.URL.revokeObjectURL(img.src); // Clean up after yourself.
                 };
                 img.src = window.URL.createObjectURL(blob);
@@ -154,11 +120,11 @@
             alert("The upload has been canceled by the user or the browser dropped the connection.");
         }
 
-//==============================================================
+        //==============================================================
 
-/* Discard Uploaded Image related functions. */
+        /* Discard Uploaded Image related functions. */
 
-        $("#btnCancelUpload").on("click", "body", function(e) {
+        $("#btnCancelUpload").on("click", "body", function (e) {
             // Don't post back
             //e.preventDefault();
             $('#divUploadPanel').show();
@@ -181,7 +147,7 @@
             if (this.status == 200) {
                 var blob = this.response;
                 var img = document.getElementById('employeeImage');
-                img.onload = function(e) {
+                img.onload = function (e) {
                     window.URL.revokeObjectURL(img.src); // Clean up after yourself.
                 };
                 img.src = window.URL.createObjectURL(blob);

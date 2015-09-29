@@ -1,8 +1,9 @@
 ﻿@using Eisk.Models
 @model Int32?
 
-@Html.Label("")
-@Html.RequiredSymbol()
-@Html.DropDownList("", LookUpModelSet.SupervisorSelectList(Model), "Choose a supervisor", new { @class = "form-control"})
-@Html.ValidationMessage("")
-
+<div class="col-xs-4">
+    @Html.Label("")
+    @Html.RequiredSymbol()
+    @Html.DropDownList("", LookUpModelSet.SupervisorSelectList(Model), "Choose a supervisor", new { @class = "form-control" })
+    @Html.ValidationMessage("")
+</div>

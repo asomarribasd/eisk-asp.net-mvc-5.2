@@ -5,8 +5,10 @@
     var selectList = new SelectList(CountryList.Countries, Model);
 }
 
-@Html.Label("")
-@Html.RequiredSymbol()
-@Html.DropDownList("", selectList, "Choose a country", new { @class = "form-control"})
-@Html.ValidationMessage("")
+<div class="col-xs-4">
+    @Html.Label("")
+    @Html.RequiredSymbol()
+    @Html.DropDownList("", selectList, "Choose a country", new { @class = "form-control" })
+    @Html.ValidationMessage("")
+</div>
 

@@ -1,7 +1,9 @@
 ﻿@model Int32
 
-@Html.Label("")
-@Html.RequiredSymbol()
-@Html.TextBox("", (Model), new { @class = "form-control" })
-@Html.ValidationMessage("")
+<div class="col-xs-4">
+    @Html.Label("")
+    @Html.RequiredSymbol()
+    @Html.TextBox("", (Model), new { @class = "form-control" })
+    @Html.ValidationMessage("")
 
+</div>
