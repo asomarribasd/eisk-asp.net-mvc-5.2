@@ -1,4 +1,6 @@
 ﻿@model string
 
-@Html.TextBox("", (Model), new { @class = "form-control", maxlength = "5" })
+@Html.Label("")
+@Html.TextBox("", (Model), new { @class = "form-control" })
+@Html.ValidationMessage("")
 
