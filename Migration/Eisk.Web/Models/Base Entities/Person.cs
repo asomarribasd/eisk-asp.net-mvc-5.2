@@ -41,6 +41,7 @@ namespace Eisk.Models
 
         [DataType(DataType.MultilineText)]
         [Column(TypeName = "ntext")]
+        [UIHint("TextArea")]
         public string Notes { get; set; }
 
         [Column(TypeName = "image")]
