@@ -323,6 +323,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_TextEditorFor.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

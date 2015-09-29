@@ -30,7 +30,7 @@
 }
 
 @using (Html.BeginForm(Model.EditorAction, "Employees", FormMethod.Post,
-                                                    new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                                                                            new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     @Html.ValidationSummary(true)
     <h1 class="h1">
@@ -48,6 +48,34 @@
             </div>
             <div class="col-xs-4">
                 @Html.EditorFor(m => m.LastName)
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-4">
+                @Html.EditorFor(m => m.TitleOfCourtesy)
+            </div>
+            <div class="col-xs-4">
+                @Html.EditorFor(m => m.BirthDate)
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-4">
+                @Html.EditorFor(m => m.Title)
+            </div>
+            <div class="col-xs-4">
+                @Html.EditorFor(m => m.HireDate)
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-4">
+                @Html.EditorFor(m => m.ReportsTo)
+            </div>
+        </div><div class="row form-group">
+            <div class="col-xs-4">
+                @Html.EditorFor(m => m.Phone)
+            </div>
+            <div class="col-xs-4">
+                @Html.EditorFor(m => m.Extension)
             </div>
         </div>
         <br>
