@@ -1,22 +1,22 @@
 ﻿@*<script src="@Url.Content("~/Scripts/eisk-required-if-validation.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery-ui-1.8.18.custom.min.js")" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function () {
-        $(".datepicker").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            showOn: "focus",
-            showAnim: 'slideDown'
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.18.custom.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                showOn: "focus",
+                showAnim: 'slideDown'
+            });
         });
-    });
-</script>
-<script type="text/javascript">
+    </script>
+    <script type="text/javascript">
 
-    $("#anim").change(function () {
-        $("#datepicker").datepicker("option", "showAnim", $(this).val());
-    });
+        $("#anim").change(function () {
+            $("#datepicker").datepicker("option", "showAnim", $(this).val());
+        });
 
-</script>*@
+    </script>*@
 <style type="text/css">
     .bs-example {
         margin: 20px 60px;
@@ -30,7 +30,7 @@
 }
 
 @using (Html.BeginForm(Model.EditorAction, "Employees", FormMethod.Post,
-                            new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                                        new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     @Html.ValidationSummary(true)
     <h1 class="h1">
@@ -42,28 +42,19 @@
     </p>
     @Html.HiddenFor(model => model.Id)
     <div class="bs-example">
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon"></span></span>
-                    <input type="text" class="form-control" placeholder="First Name">
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Last Name">
-                </div>
-            </div>
-        </div>
-        <br>
         <div class="row form-group">
             <div class="col-xs-4">
                 @Html.LabelFor(m => m.FirstName)
-                @Html.EditorFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.FirstName)
             </div>
             <div class="col-xs-4">
-                <input type="text" class="form-control" placeholder="Title of Courtesy">
+                @Html.LabelFor(m => m.LastName)
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    @Html.TextBoxFor(m => m.LastName, new {@class = "form-control"})
+                </div>
+                @Html.ValidationMessageFor(m => m.LastName)
             </div>
         </div>
         <br>
