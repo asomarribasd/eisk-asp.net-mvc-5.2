@@ -2,11 +2,10 @@
 
 Eisk template featuring asp.net mvc 5.2.3, Entity Framework (Code First) 6.1.3, Visual Studio 2015 etc.
 
-##System Requirements 
-###Development
+### System Requirements (Development)
 Visual Studio 2015
 
-##Core Technologies
+###Core Technologies
 
 * Web Framework: ASP.NET MVC 5.2.3
 * View Engine: ASP.NET Razor: 3.2.3
