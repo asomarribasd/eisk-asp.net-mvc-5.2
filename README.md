@@ -1,41 +1,27 @@
 (Please note that this repository currently contains incomplete content, which are under in-progress status. Please check back later for stable and complete release.)
 
-Eisk template featuring asp.net mvc 6.0, Visual Studio 2015, Entity Framework (Code First) etc.
+Eisk template featuring asp.net mvc 5.2.3, Entity Framework (Code First) 6.1.3, Visual Studio 2015 etc.
 
 ##System Requirements 
 ###Development
 Visual Studio 2015
 
-##Key Features
-* Built on .NET Core, which supports true side-by-side app versioning
-* Build and run cross-platform ASP.NET apps on Windows, Mac and Linux
-
 ##Core Technologies
 
-* ASP.NET 5
-* ASP.NET MVC 6
-* Identity 2.0
-* Entity Framework 7.0
-* DNX 1.0.0.0
-* DNX Core 5.0
-* C# 6.0
-* Sql Server Compact Framework
-* Twitter Bootstrap Template
-* Visual Studio 2015
+* Web Framework: ASP.NET MVC 5.2.3
+* View Engine: ASP.NET Razor: 3.2.3
+* ORM: Entity Framework 6.1.3
+* Mapping Framework: Automapper 4.0.4
+* Testing Framework: xUnit 2.0.0
+* Mocking Framework: Moq 4.2.1507
+* Dependency Injection Framework: Unity 3.5.1404 
+* Programming Language: C# 6.0
+* CSS Framework: Twitter Bootstrap 3.0.0
+* Java Script Library: jQuery 1.10.2 and jQuery UI 1.10.2
+* Relational Database: Sql Server Compact Framework 4.0
+* IDE: Visual Studio 2015
 
-##Key Features Utilized
-###ASP.NET MVC
-* Tag Helper
-* View Component
-* Built-in dependency injection
 
-##C-sharp
-* nameof operator
-* Null propagation operator
-
-##Visual Studio 
-* New project structure...
-* New packaging (binary and client side libraries)...
 
 
 
