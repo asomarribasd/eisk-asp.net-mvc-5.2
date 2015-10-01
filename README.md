@@ -3,7 +3,7 @@
 Eisk template featuring asp.net mvc 5.2.3, Entity Framework (Code First) 6.1.3, Visual Studio 2015 etc.
 
 ### System Requirements (Development)
-Visual Studio 2015
+* Visual Studio 2015
 
 ###Core Technologies
 
@@ -16,8 +16,10 @@ Visual Studio 2015
 * Dependency Injection Framework: Unity 3.5.1404 
 * Programming Language: C# 6.0
 * CSS Framework: Twitter Bootstrap 3.0.0
-* Java Script Library: jQuery 1.10.2 and jQuery UI 1.10.2
+* Java Script Library (Core): jQuery 1.10.2 
+* Java Script Library (UI): jQuery UI 1.10.2
 * Relational Database: Sql Server Compact Framework 4.0
+* Application Platform: .NET Framework 4.6
 * IDE: Visual Studio 2015
 
 
