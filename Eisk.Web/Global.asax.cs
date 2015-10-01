@@ -84,10 +84,10 @@ namespace Eisk.Web.Global
         #region Utilities
         
         //this info will typically be loaded from database
-        string GetUserRoleByUserName(string userName)
+        private string GetUserRoleByUserName(string userName)
         {
-            UserInfo user = UserDataAccess.GetByUserName(userName);
-            return userName == null ? string.Empty : user.UserRole;
+            var user = UserDataAccess.GetByUserName(userName);
+            return user == null ? string.Empty : user.UserRole;
         }
 
         #endregion
