@@ -12,29 +12,28 @@ namespace Eisk.DataAccess
         {
             get
             {
-                if (_userInMemoryDataSource == null)
-                {
-                    _userInMemoryDataSource = new List<UserInfo>();
+                if (_userInMemoryDataSource != null) return _userInMemoryDataSource;
 
-                    //add members
-                    for (var i = 0; i < 5; i++)
-                        _userInMemoryDataSource.Add(
-                            new UserInfo
-                            {
-                                UserName = "member" + (i + 1) + "@member.com",
-                                Password = "any"
-                            });
+                _userInMemoryDataSource = new List<UserInfo>();
 
-                    //add administrators
-                    for (var i = 0; i < 5; i++)
-                        _userInMemoryDataSource.Add(
-                            new UserInfo
-                            {
-                                UserRole = UserRole.Administrator.ToString(),
-                                UserName = "admin" + (i + 1) + "@admin.com",
-                                Password = "any"
-                            });
-                }
+                //add members
+                for (var i = 0; i < 5; i++)
+                    _userInMemoryDataSource.Add(
+                        new UserInfo
+                        {
+                            UserName = "member" + (i + 1) + "@member.com",
+                            Password = "any"
+                        });
+
+                //add administrators
+                for (var i = 0; i < 5; i++)
+                    _userInMemoryDataSource.Add(
+                        new UserInfo
+                        {
+                            UserRole = UserRole.Administrator.ToString(),
+                            UserName = "admin" + (i + 1) + "@admin.com",
+                            Password = "any"
+                        });
 
                 return _userInMemoryDataSource;
             }

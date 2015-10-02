@@ -21,7 +21,7 @@ namespace Eisk.Models
         [UIHint("ReportsToDropDown")]
         public int? ReportsTo { get; set; }
 
-        [ForeignKey("ReportsTo")]
+        [ForeignKey(nameof(ReportsTo))]
         public virtual Employee Supervisor { get; set; }
 
         public virtual List<Employee> Subordinates { get; set; }

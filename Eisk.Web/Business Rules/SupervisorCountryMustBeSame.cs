@@ -12,19 +12,15 @@ namespace Eisk.BusinessRules
 
         public static ValidationResult Validate(Employee employee)
         {
-            if (employee.ReportsTo != null)
-            {
-                if (employee.Supervisor == null)
-                    employee.Supervisor =
-                        DependencyHelper.GetInstance<DatabaseContext>().
-                            EmployeeRepository.
-                            Find((int) employee.ReportsTo);
+            if (employee.ReportsTo == null) return ValidationResult.Success;
 
-                if (employee.Address.Country != employee.Supervisor.Address.Country)
-                    return new ValidationResult(ERROR_MESSAGE, new[] {string.Empty, nameof(Address.Country)});
-            }
+            if (employee.Supervisor == null)
+                employee.Supervisor =
+                    DependencyHelper.GetInstance<DatabaseContext>().
+                        EmployeeRepository.
+                        Find((int) employee.ReportsTo);
 
-            return ValidationResult.Success;
+            return employee.Address.Country != employee.Supervisor.Address.Country ? new ValidationResult(ERROR_MESSAGE, new[] {string.Empty, nameof(Address.Country)}) : ValidationResult.Success;
         }
 
         public static bool IsErrorAvalilableIn(Controller controller)
