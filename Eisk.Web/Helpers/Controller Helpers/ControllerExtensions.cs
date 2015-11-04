@@ -9,12 +9,9 @@ namespace Eisk.Helpers
     {
         //validation related extension
 
-        public static List<ValidationResult> FireValidationForModel(this Controller controller, object @object)
+        public static IList<ValidationResult> Validate(this Controller controller, object @object)
         {
-            var validationContext = new ValidationContext(@object, null, null);
-            var validationResults = new List<ValidationResult>();
-
-            Validator.TryValidateObject(@object, validationContext, validationResults, true);
+            var validationResults = Validate(@object);
 
             foreach (var validationResult in validationResults)
             {
@@ -28,6 +25,15 @@ namespace Eisk.Helpers
             }
 
             return validationResults;
+        }
+
+        public static IList<ValidationResult> Validate(object @object)
+        {
+            var results = new List<ValidationResult>();
+            var validationContext = new ValidationContext(@object, null, null);
+            Validator.TryValidateObject(@object, validationContext, results, true);
+            (@object as IValidatableObject)?.Validate(validationContext);
+            return results;
         }
 
         //messsage extensions

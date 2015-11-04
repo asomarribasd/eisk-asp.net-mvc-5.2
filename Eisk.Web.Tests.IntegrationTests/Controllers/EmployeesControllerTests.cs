@@ -32,7 +32,7 @@ namespace Eisk.IntegrationTests
 
             var employee = TestDataHelper.CreateEmployeeWithValidData(1);
 
-            controller.FireValidationForModel(employee);
+            controller.Validate(employee);
 
             //Act
             var result = controller.Edit(employee);
@@ -49,7 +49,7 @@ namespace Eisk.IntegrationTests
             var controller = DependencyHelper.GetInstance<EmployeesController>();
             var employee = TestDataHelper.CreateEmployeeWithValidData(1);
             employee.Address.AddressLine = "2, ABC Road";
-            controller.FireValidationForModel(employee);
+            controller.Validate(employee);
             //Act
             controller.Edit(employee);
 
@@ -69,7 +69,7 @@ namespace Eisk.IntegrationTests
 
             employee.Address.AddressLine = string.Empty;
 
-            controller.FireValidationForModel(employee.Address);
+            controller.Validate(employee.Address);
 
             //Act
             var result = controller.Edit(employee);

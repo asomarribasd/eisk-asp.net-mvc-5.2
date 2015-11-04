@@ -26,7 +26,7 @@ namespace Eisk.Tests
             _mockDbContext.Setup(db => db.EmployeeRepository).Returns(_fakeEmployeeDbSet);
 
             //Act
-            _employeeController.FireValidationForModel(_employee);
+            _employeeController.Validate(_employee);
             
             //Assert
             Assert.True(EmployeeAddressMustBeUnique.IsErrorAvalilableIn(_employeeController, _employee));
@@ -65,7 +65,7 @@ namespace Eisk.Tests
             _mockDbContext.Setup(db => db.EmployeeRepository).Returns(_fakeEmployeeDbSet);
 
             /************* Action ************************************************/
-            _employeeController.FireValidationForModel(_employee);
+            _employeeController.Validate(_employee);
             
             /************* Assert ************************************************/
             Assert.True(SupervisorCountryMustBeSame.IsErrorAvalilableIn(_employeeController));
